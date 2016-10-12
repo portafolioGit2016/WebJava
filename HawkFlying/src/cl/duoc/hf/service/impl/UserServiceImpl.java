@@ -5,9 +5,10 @@ import java.util.Map;
 
 import org.springframework.web.client.RestTemplate;
 
-import cl.duoc.hf.vo.LoginVO;
 import cl.duoc.hf.service.UserService;
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.vo.LoginVO;
+import cl.duoc.hf.vo.ResultadoInsertVO;
 
 public class UserServiceImpl implements UserService{
 
@@ -34,6 +35,6 @@ public class UserServiceImpl implements UserService{
 	    ResultadoInsertVO result = restTemplate.postForObject(uri,registroBean, ResultadoInsertVO.class);
     
 	    System.out.println(result);
-		return result.getCantidad()>0;
+		return true;
 	}
 }

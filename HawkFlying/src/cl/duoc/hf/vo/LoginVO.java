@@ -1,4 +1,4 @@
-package cl.duoc.hf;
+package cl.duoc.hf.vo;
 
 import java.util.HashMap;
 import java.util.Map;
