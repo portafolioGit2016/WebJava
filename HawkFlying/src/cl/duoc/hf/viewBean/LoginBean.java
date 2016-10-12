@@ -1,4 +1,4 @@
-package cl.duoc.viewBean;
+package cl.duoc.hf.viewBean;
 
 public class LoginBean
 {

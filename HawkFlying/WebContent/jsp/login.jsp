@@ -28,7 +28,8 @@
 			</div>
 			<input type="submit" name="submit" value="Iniciar sesión" class="btn-login">
 			<br>
-			<a href="#">¿Olvidaste tu contraseña?</a>
+			<span>${message}</span><br>
+			<a href="/forgotPass">¿Olvidaste tu contraseña?</a>
 		</form:form>
 	</div>
 </body>

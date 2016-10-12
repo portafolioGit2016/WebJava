@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.duoc.hf.delegate.LoginDelegate;
-import cl.duoc.viewBean.LoginBean;
+import cl.duoc.hf.viewBean.LoginBean;
 
 
 @Controller
@@ -45,7 +45,7 @@ public class LoginController
 			{
 				model = new ModelAndView("login");
 model.addObject("loginBean", loginBean);
-				request.setAttribute("message", "Invalid credentials!!");
+				request.setAttribute("message", "Usuario/Clave Invalido");
 			}
 
 		}

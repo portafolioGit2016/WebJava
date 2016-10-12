@@ -12,6 +12,9 @@
 	<bean id="loginDelegate" class="cl.duoc.hf.delegate.LoginDelegate">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	<bean id="userDelegate" class="cl.duoc.hf.delegate.UserDelegate">
+		<property name="userService" ref="userService"></property>
+	</bean>
 
 	<bean id="userService" class="cl.duoc.hf.service.impl.UserServiceImpl">
 	</bean>
