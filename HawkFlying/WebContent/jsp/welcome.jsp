@@ -33,7 +33,7 @@
         <a href="#">
           <i class="fa fa-home fa-2x"></i>
           <span class="nav-text">
-            Ver perfil
+            Ver perfil 
           </span>
         </a>
       </li>
