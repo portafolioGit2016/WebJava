@@ -6,8 +6,23 @@ public class RegistroBean {
 	private String nombre;
 	private String apelllido;
 	private String email;
-	private String fechaNacimiento;
+	private String fecha_Nacimiento;
 	private String rut;
+	private Integer licencia_piloto;
+	private String tipoPerfil;
+	
+	public Integer getLicencia_piloto() {
+		return licencia_piloto;
+	}
+	public void setLicencia_piloto(Integer licencia_piloto) {
+		this.licencia_piloto = licencia_piloto;
+	}
+	public String getTipoPerfil() {
+		return tipoPerfil;
+	}
+	public void setTipoPerfil(String tipoPerfil) {
+		this.tipoPerfil = tipoPerfil;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -38,16 +53,17 @@ public class RegistroBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+	
 	public String getRut() {
 		return rut;
 	}
 	public void setRut(String rut) {
 		this.rut = rut;
+	}
+	public String getFecha_Nacimiento() {
+		return fecha_Nacimiento;
+	}
+	public void setFecha_Nacimiento(String fecha_Nacimiento) {
+		this.fecha_Nacimiento = fecha_Nacimiento;
 	}
 }

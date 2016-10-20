@@ -18,20 +18,27 @@
 				<form:password id="password" name="password" path="password" placeholder="Contraseña"/><br>
 			</div>
 			<div class="form-input">
-				<form:input id="nombre" name="nombre" path="nombre" placeholder="Nombre de usuario"/><br>
+				<form:input id="nombre" name="nombre" path="nombre" placeholder="Ingrese Nombre "/><br>
 			</div>
 			<div class="form-input">
-				<form:input id="apelllido" name="apelllido" path="apelllido" placeholder="Apellido de usuario"/><br>
+				<form:input id="apelllido" name="apelllido" path="apelllido" placeholder="ingrese Apellido "/><br>
 			</div>
 			<div class="form-input">
 				<form:input id="email" name="email" path="email" placeholder="ingrese email de usuario"/><br>
 			</div>
 			<div class="form-input">
-				<form:input id="fechaNacimiento" name="fechaNacimiento" path="fechaNacimiento" /><br>
+				<form:input id="fecha_Nacimiento" name="fecha_Nacimiento" path="fecha_Nacimiento" placeholder="fech nac" /><br>
+			</div>
+			<div class="form-input">
+				<form:input id="tipoPerfil" name="tipoPerfil" path="tipoPerfil" placeholder="seleccione tipo perfil"/><br>
+			</div>
+			<div class="form-input">
+				<form:input id="licencia_piloto" name="licencia_piloto" path="licencia_piloto" placeholder="seleccione profe piloto"/><br>
 			</div>
 			<div class="form-input">
 				<form:input id="rut" name="rut" path="rut" placeholder="ingrese rut de usuario"/><br>
 			</div>
+			
 			<input type="submit" name="submit" value="Crear Usuario" class="btn-login">
 			<br>
 			<span>${message}</span><br>

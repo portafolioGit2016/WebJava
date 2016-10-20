@@ -3,6 +3,7 @@ package cl.duoc.hf.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import cl.duoc.hf.service.UserService;
@@ -29,12 +30,17 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean createUser(RegistroBean registroBean) {
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuario/create/{user}/{pwd}/{nombre}/{apellido}/{email}/{rut}/{fecha}";
-	     
-	    RestTemplate restTemplate = new RestTemplate();
+				
+		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
+	    try{
+		RestTemplate restTemplate = new RestTemplate();
 	    ResultadoInsertVO result = restTemplate.postForObject(uri,registroBean, ResultadoInsertVO.class);
     
 	    System.out.println(result);
-		return true;
+	    return result.getID()!=null;
+	    }catch(HttpServerErrorException e){
+	    	System.out.println(e.getResponseBodyAsString());
+	    	return false;
+	    }
 	}
 }
