@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="css/alumnos.css">
 </head>
 <body>
+	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 	<nav>
     <div class="nav-wrapper">
       <a href="index-intra.html" class="brand-logo"><i class="fa fa-plane fa-2x"></i></a>
