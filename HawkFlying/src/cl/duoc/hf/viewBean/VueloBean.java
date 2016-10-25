@@ -51,4 +51,21 @@ public class VueloBean {
 	public void setId_mision(Integer id_mision) {
 		this.id_mision = id_mision;
 	}
+	
+	
+	public String origenVueloDisponible(VueloBean vuelo){
+		if(vuelo.origen == "Santiago" || vuelo.origen == "Puerto Montt" || vuelo.origen == "Temuco"){
+			return "Disponible";
+		}else{
+			return "Origen no disponible";
+		}
+	}
+	
+	public String destinoVueloDisponible(VueloBean vuelo){
+		if(vuelo.origen == "Santiago" || vuelo.origen == "Puerto Montt" || vuelo.origen == "Temuco"){
+			return "Disponible";
+		}else{
+			return "Destino no disponible";
+		}
+	}
 }
