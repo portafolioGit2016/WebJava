@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
 	    System.out.println(result);
 	    return result.getID()!=null;
 	    }catch(HttpServerErrorException e){
-	    	System.out.println(e.getResponseBodyAsString());
+	    	System.out.println(e.getResponseHeaders());
 	    	return false;
 	    }
 	}

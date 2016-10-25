@@ -4,7 +4,7 @@ public class RegistroBean {
 	private String username;
 	private String password;
 	private String nombre;
-	private String apelllido;
+	private String apellido;
 	private String email;
 	private String fecha_Nacimiento;
 	private String rut;
@@ -41,11 +41,11 @@ public class RegistroBean {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApelllido() {
-		return apelllido;
+	public String getApellido() {
+		return apellido;
 	}
-	public void setApelllido(String apelllido) {
-		this.apelllido = apelllido;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 	public String getEmail() {
 		return email;

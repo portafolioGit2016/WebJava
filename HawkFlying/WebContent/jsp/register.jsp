@@ -21,7 +21,7 @@
 				<form:input id="nombre" name="nombre" path="nombre" placeholder="Ingrese Nombre "/><br>
 			</div>
 			<div class="form-input">
-				<form:input id="apelllido" name="apelllido" path="apelllido" placeholder="ingrese Apellido "/><br>
+				<form:input id="apellido" name="apellido" path="apellido" placeholder="ingrese Apellido "/><br>
 			</div>
 			<div class="form-input">
 				<form:input id="email" name="email" path="email" placeholder="ingrese email de usuario"/><br>
