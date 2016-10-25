@@ -21,7 +21,7 @@
     <div class="nav-wrapper">
       <a href="index-intra.html" class="brand-logo"><i class="fa fa-plane fa-2x"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="${contextPath}/register">Crear Usuario</a></li>
+        <li><a href="${contextPath}/adminUsuarios">Usuarios</a></li>
         <li><a href="badges.html">Opción 2</a></li>
         <li><a href="collapsible.html">Opción 3</a></li>
       </ul>
