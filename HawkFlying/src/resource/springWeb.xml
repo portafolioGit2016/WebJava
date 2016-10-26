@@ -18,4 +18,5 @@
 	<import resource="springBeanConfiguration.xml"/>
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven />
+	<mvc:view-controller path="/welcome" view-name="welcome" />
 </beans>

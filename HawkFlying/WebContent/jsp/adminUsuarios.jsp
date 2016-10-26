@@ -2,6 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="include.jsp"%>
 <html>
 <head>
   <title>Portafolio</title>
@@ -18,95 +19,10 @@
 </head>
 <body>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-	<nav>
-    <div class="nav-wrapper">
-      <a href="index-intra.html" class="brand-logo"><i class="fa fa-plane fa-2x"></i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Opción 1</a></li>
-        <li><a href="badges.html">Opción 2</a></li>
-        <li><a href="collapsible.html">Opción 3</a></li>
-      </ul>
-    </div>
-  </nav>
-  <nav class="main-menu">
-    <ul>
-      <li>
-        <a href="#">
-          <i class="fa fa-home fa-2x"></i>
-          <span class="nav-text">
-            Ver perfil
-          </span>
-        </a>
-      </li>
-      <li class="has-subnav">
-        <a href="perfil.html">
-          <i class="fa fa-child fa-2x"></i>
-          <span class="nav-text">
-            Ver perfil
-          </span>
-        </a>
-      </li>
-      <li class="has-subnav">
-        <a href="menu.html">
-          <i class="fa fa-plane fa-2x"></i>
-          <span class="nav-text">
-            Menú de vuelo
-          </span>
-        </a>
-      </li>
-      <li class="has-subnav">
-          <a href="menu-aeronave.html">
-            <i class="fa fa-fighter-jet fa-2x"></i>
-            <span class="nav-text">
-              Menú de aeronaves
-            </span>
-          </a>
-      </li>
-      <li>
-        <a href="alertas.html">
-          <i class="fa fa-exclamation-triangle fa-2x"></i>
-          <span class="nav-text">
-            Alertas
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-book fa-2x"></i>
-          <span class="nav-text">
-            Historial personal
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="general.html">
-          <i class="fa fa-users fa-2x"></i>
-          <span class="nav-text">
-            Registros generales
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="alumnos.html">
-          <i class="fa fa-user-plus fa-2x"></i>
-          <span class="nav-text">
-            Mis alumnos
-          </span>
-        </a>
-      </li>
-    </ul>
-    <ul class="logout">
-      <li>
-       <a href="#">
-          <i class="fa fa-power-off fa-2x"></i>
-          <span class="nav-text">
-            Desconectarse
-          </span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+	<%@include file="MenuInclude.jsp" %>
+  <div class="center"><span>${message}</span><br></div>
   <div class="create-new-user-link" style="float:right;margin-top:10px;margin-bottom:10px;margin-right:10px;">
+  	
   	<a class="waves-effect waves-light btn modal-trigger" href="#modal2">Crear Usuario</a>
   </div>
   <div class="container-alumnos">
@@ -162,25 +78,23 @@
       </div>
     </div>
     <div id="modal2" class="modal">
-    <form class="col s12" id="registroForm" method="post" action="register" modelAttribute="registroBean">
+    <form:form class="col s12" method="post" action="adminUsuarios" modelAttribute="registroBean">
       <div class="modal-content">
         <h4>Crear usuario</h4>
         <div class="row">
-            <input id="username" name="username" path="username" type="text" placeholder="Username"/>
-        	<input id="password" name="password" path="password" type="password" placeholder="Password"/>
-        	<input id="nombre" name="nombre" path="nombre" type="text" placeholder="Nombre"/>
-        	<input id="apellido" name="apellido" path="apellido" type="text" placeholder="Apellido"/>
-        	<input id="email" name="email" path="email" type="text" placeholder="Email"/>
-        	<input id="fecha_Nacimiento" name="fecha_Nacimiento" path="fecha_Nacimiento" type="text" placeholder="Fecha de nacimiento">
-        	<input id="tipoPerfil" name="tipoPerfil" path="tipoPerfil" placeholder="Tipo perfil">
-        	<input id="licencia_piloto" name="licencia_piloto" path="licencia_piloto" placeholder="Licencia piloto">
-        	<input id="rut" name="rut" path="rut" placeholder="Rut">
+            <form:input type="text" path="username" placeholder="Username"/>
+        	<form:password  path="password" placeholder="Password"/>
+        	<form:input type="text" path="nombre" placeholder="Nombre"/>
+        	<form:input type="text" path="apellido" placeholder="Apellido"/>
+        	<form:input type="text" path="email" placeholder="Email"/>
+        	<form:input type="date" path="fecha_Nacimiento" class="datepicker" placeholder="Fecha de nacimiento" />
+        	<form:input type="text" path="rut" placeholder="rut"/>
         </div>
       </div>
       <div class="modal-footer">
-      	<button type="submit" name="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">Crear</button>
+      	<button type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">Crear</button>
       </div>
-     </form>
+     </form:form>
     </div>
 
 <script type="text/javascript">
