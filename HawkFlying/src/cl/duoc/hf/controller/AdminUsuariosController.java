@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.duoc.hf.delegate.LoginDelegate;
@@ -64,6 +66,17 @@ public class AdminUsuariosController {
 			e.printStackTrace();
 		}
 
+		return model;
+	}
+	@RequestMapping(value="/deleteUser",method=RequestMethod.GET, params = {"id"} )
+	public @ResponseBody ModelAndView getUsersForGrid(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "id") int id){
+		ModelAndView model = new ModelAndView("adminUsuarios");
+		userDelegate.deleteUser(id);
+		model.addObject("listaUsuarios", userDelegate.getUsuarios());
+		request.setAttribute("message", "Usuario eliminado exitosamente");
+		RegistroBean registroBean = new RegistroBean();
+		model.addObject("registroBean", registroBean);
 		return model;
 	}
 }
