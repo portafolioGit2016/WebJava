@@ -162,20 +162,23 @@
       </div>
     </div>
     <div id="modal2" class="modal">
-    <form class="col s12">
+    <form class="col s12" id="registroForm" method="post" action="register" modelAttribute="registroBean">
       <div class="modal-content">
         <h4>Crear usuario</h4>
         <div class="row">
-            <input type="text" placeholder="Username"/>
-        	<input type="password" placeholder="Password"/>
-        	<input type="text" placeholder="Nombre"/>
-        	<input type="text" placeholder="Apellido"/>
-        	<input type="text" placeholder="Email"/>
-        	<input type="date" class="datepicker" placeholder="Fecha de nacimiento">
+            <input id="username" name="username" path="username" type="text" placeholder="Username"/>
+        	<input id="password" name="password" path="password" type="password" placeholder="Password"/>
+        	<input id="nombre" name="nombre" path="nombre" type="text" placeholder="Nombre"/>
+        	<input id="apellido" name="apellido" path="apellido" type="text" placeholder="Apellido"/>
+        	<input id="email" name="email" path="email" type="text" placeholder="Email"/>
+        	<input id="fecha_Nacimiento" name="fecha_Nacimiento" path="fecha_Nacimiento" type="text" placeholder="Fecha de nacimiento">
+        	<input id="tipoPerfil" name="tipoPerfil" path="tipoPerfil" placeholder="Tipo perfil">
+        	<input id="licencia_piloto" name="licencia_piloto" path="licencia_piloto" placeholder="Licencia piloto">
+        	<input id="rut" name="rut" path="rut" placeholder="Rut">
         </div>
       </div>
       <div class="modal-footer">
-      	<button type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">Crear</button>
+      	<button type="submit" name="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">Crear</button>
       </div>
      </form>
     </div>
