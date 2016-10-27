@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 import cl.duoc.hf.service.UserService;
 import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.vo.LoginVO;
+import cl.duoc.hf.vo.PerfilVO;
+import cl.duoc.hf.vo.PerfilesResponse;
 import cl.duoc.hf.vo.ResultadoInsertVO;
 import cl.duoc.hf.vo.UsuarioVO;
 import cl.duoc.hf.vo.UsuariosResponse;
@@ -62,5 +64,11 @@ public class UserServiceImpl implements UserService{
         params.put("id", String.valueOf(id));
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete ( uri,  params );
+	}
+	@Override
+	public ArrayList<PerfilVO> getPerfiles(){
+		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/perfilusuario/";
+		RestTemplate restTemplate = new RestTemplate();
+		return restTemplate.getForObject(uri, PerfilesResponse.class).getPerfiles();
 	}
 }

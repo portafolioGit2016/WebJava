@@ -88,6 +88,11 @@
         	<form:input type="text" path="apellido" placeholder="Apellido"/>
         	<form:input type="text" path="email" placeholder="Email"/>
         	<form:input type="date" path="fecha_Nacimiento" class="datepicker" placeholder="Fecha de nacimiento" />
+        	<form:select path="tipoPerfil" style="display:block!important">
+        		<form:option value="NONE" label="--- Seleccione Piloto ---" />
+        		<form:options items="${listaPerfiles}" itemValue="idPerfil" itemLabel="perfil"/>
+        		
+        	</form:select>
         	<form:input type="text" path="rut" placeholder="rut"/>
         </div>
       </div>
