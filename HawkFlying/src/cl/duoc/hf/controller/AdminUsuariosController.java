@@ -34,6 +34,7 @@ public class AdminUsuariosController {
 		RegistroBean registroBean = new RegistroBean();
 		model.addObject("registroBean", registroBean);
 		model.addObject("listaPerfiles", userDelegate.getPerfiles());
+		model.addObject("listaPilotos", userDelegate.getPilotos());
 		return model;
 	}
 	@RequestMapping(value="/adminUsuarios",method=RequestMethod.POST)
@@ -53,6 +54,7 @@ public class AdminUsuariosController {
 				model = new ModelAndView("adminUsuarios");
 				model.addObject("listaUsuarios", userDelegate.getUsuarios());
 				model.addObject("listaPerfiles", userDelegate.getPerfiles());
+				model.addObject("listaPilotos", userDelegate.getPilotos());
 				request.setAttribute("message", "Usuario creado correctamente");
 			}
 			else
@@ -61,6 +63,7 @@ public class AdminUsuariosController {
 				model.addObject("registroBean", registroBean);
 				model.addObject("listaUsuarios", userDelegate.getUsuarios());
 				model.addObject("listaPerfiles", userDelegate.getPerfiles());
+				model.addObject("listaPilotos", userDelegate.getPilotos());
 				request.setAttribute("message", "Error al crear usuario");	
 			}
 		}
@@ -78,6 +81,7 @@ public class AdminUsuariosController {
 		userDelegate.deleteUser(id);
 		model.addObject("listaUsuarios", userDelegate.getUsuarios());
 		model.addObject("listaPerfiles", userDelegate.getPerfiles());
+		model.addObject("listaPilotos", userDelegate.getPilotos());
 		request.setAttribute("message", "Usuario eliminado exitosamente");
 		RegistroBean registroBean = new RegistroBean();
 		model.addObject("registroBean", registroBean);

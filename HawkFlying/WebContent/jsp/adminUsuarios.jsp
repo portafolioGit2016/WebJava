@@ -89,8 +89,13 @@
         	<form:input type="text" path="email" placeholder="Email"/>
         	<form:input type="date" path="fecha_Nacimiento" class="datepicker" placeholder="Fecha de nacimiento" />
         	<form:select path="tipoPerfil" style="display:block!important">
-        		<form:option value="NONE" label="--- Seleccione Piloto ---" />
+        		<form:option value="" label="--- Seleccione Perfil ---" />
         		<form:options items="${listaPerfiles}" itemValue="idPerfil" itemLabel="perfil"/>
+        		
+        	</form:select>
+        	<form:select path="licencia_piloto" style="display:block!important">
+        		<form:option value="" label="--- Seleccione Piloto ---" />
+        		<form:options items="${listaPilotos}" itemValue="idPiloto" itemLabel="usuarioVO.nombre"/>
         		
         	</form:select>
         	<form:input type="text" path="rut" placeholder="rut"/>

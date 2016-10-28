@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import cl.duoc.hf.service.UserService;
 import cl.duoc.hf.vo.PerfilVO;
+import cl.duoc.hf.vo.PilotoVO;
 import cl.duoc.hf.vo.UsuarioVO;
 
 public class UserDelegate
@@ -27,5 +28,8 @@ public class UserDelegate
 	}
 	public ArrayList<PerfilVO> getPerfiles(){
 		return userService.getPerfiles();
+	}
+	public ArrayList<PilotoVO> getPilotos(){
+		return userService.getPilotos();
 	}
 }
