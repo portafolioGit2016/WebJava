@@ -1,6 +1,7 @@
 package cl.duoc.hf.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -95,7 +96,9 @@ public class AdminUsuariosController {
 	    registroBean.setId(Integer.valueOf(id));
 	    registroBean.setApellido(usuario.getApellido());
 	    registroBean.setEmail(usuario.getEmail());
-	    registroBean.setFecha_Nacimiento(usuario.getFechaNac());
+	    final Calendar calendar = javax.xml.bind.DatatypeConverter.parseDateTime(usuario.getFechaNac());
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd",Locale.US);
+		registroBean.setFecha_Nacimiento(sf.format(calendar.getTime()).toUpperCase());
 	    registroBean.setLicencia_piloto(usuario.getLicenciaPiloto());
 	    registroBean.setNombre(usuario.getNombre());
 	    registroBean.setPassword(usuario.getPassword());
