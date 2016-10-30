@@ -3,6 +3,7 @@ package cl.duoc.hf.delegate;
 import java.util.ArrayList;
 
 import cl.duoc.hf.service.UserService;
+import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.vo.PerfilVO;
 import cl.duoc.hf.vo.PilotoVO;
 import cl.duoc.hf.vo.UsuarioVO;
@@ -31,5 +32,11 @@ public class UserDelegate
 	}
 	public ArrayList<PilotoVO> getPilotos(){
 		return userService.getPilotos();
+	}
+	public UsuarioVO getUsuario(String id){
+		return userService.getUsuario(id);
+	}
+	public boolean updateUser(RegistroBean registroBean){
+		return userService.updateUser(registroBean);
 	}
 }

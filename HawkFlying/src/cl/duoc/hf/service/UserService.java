@@ -20,4 +20,5 @@ public interface UserService
 	public ArrayList<PerfilVO> getPerfiles();
 	public void deleteUser(int id);
 	public ArrayList<PilotoVO> getPilotos();
+	public boolean updateUser(RegistroBean registroBean);
 }

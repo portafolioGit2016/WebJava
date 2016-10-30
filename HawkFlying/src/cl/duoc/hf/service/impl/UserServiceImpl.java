@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -93,6 +96,24 @@ public class UserServiceImpl implements UserService{
 	    UsuarioVO result = restTemplate.getForObject(uri, UsuarioVO.class, params);
     
 		return result;
+	}
+	@Override
+	public boolean updateUser(RegistroBean registroBean) {
+				
+		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
+	    try{
+		RestTemplate restTemplate = new RestTemplate();
+		Map<String, String> param = new HashMap<String, String>();
+	    param.put("id",registroBean.getId().toString());
+	    HttpEntity<RegistroBean> requestEntity = new HttpEntity<RegistroBean>(registroBean);
+	    ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.PUT, requestEntity, String.class,param);
+    
+	    System.out.println(response.getStatusCode());
+	    return response.getStatusCode().value()==200;
+	    }catch(HttpServerErrorException e){
+	    	System.out.println(e.getResponseHeaders());
+	    	return false;
+	    }
 	}
 //	public static void main(String args[]){
 //		System.setProperty("https.proxyHost", "10.181.124.230");

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cl.duoc.hf.delegate.LoginDelegate;
 import cl.duoc.hf.delegate.UserDelegate;
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.vo.UsuarioVO;
 
 @Controller
 public class AdminUsuariosController {
@@ -87,4 +88,58 @@ public class AdminUsuariosController {
 		model.addObject("registroBean", registroBean);
 		return model;
 	}
+	@RequestMapping(value="/getUser", method=RequestMethod.GET)
+	public @ResponseBody RegistroBean getUsuario(@RequestParam String id) {
+	    UsuarioVO usuario = userDelegate.getUsuario(id);
+	    RegistroBean registroBean=new RegistroBean();
+	    registroBean.setId(Integer.valueOf(id));
+	    registroBean.setApellido(usuario.getApellido());
+	    registroBean.setEmail(usuario.getEmail());
+	    registroBean.setFecha_Nacimiento(usuario.getFechaNac());
+	    registroBean.setLicencia_piloto(usuario.getLicenciaPiloto());
+	    registroBean.setNombre(usuario.getNombre());
+	    registroBean.setPassword(usuario.getPassword());
+	    registroBean.setRut(usuario.getRut());
+	    registroBean.setTipoPerfil(String.valueOf(usuario.getTipoperfil()));
+	    registroBean.setUsername(usuario.getUsername());
+	    return registroBean;
+	}
+	@RequestMapping(value="/updateUser",method=RequestMethod.POST)
+	public ModelAndView updateRegistro(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("registroBean")RegistroBean registroBean)
+	{
+		ModelAndView model= null;
+		try
+		{
+			SimpleDateFormat sfO=new SimpleDateFormat("yyyy-MM-dd");
+			Date fechaNac=sfO.parse(registroBean.getFecha_Nacimiento());
+			SimpleDateFormat sf=new SimpleDateFormat("dd-MMM-yy",Locale.US);
+			registroBean.setFecha_Nacimiento(sf.format(fechaNac).toUpperCase());
+			boolean isUpdated = userDelegate.updateUser(registroBean);
+			if(isUpdated)
+			{
+				System.out.println("Registro Actualizado Correctamente");
+				model = new ModelAndView("adminUsuarios");
+				model.addObject("listaUsuarios", userDelegate.getUsuarios());
+				model.addObject("listaPerfiles", userDelegate.getPerfiles());
+				model.addObject("listaPilotos", userDelegate.getPilotos());
+				request.setAttribute("message", "Usuario actualizado correctamente");
+			}
+			else
+			{
+				model = new ModelAndView("adminUsuarios");
+				model.addObject("registroBean", registroBean);
+				model.addObject("listaUsuarios", userDelegate.getUsuarios());
+				model.addObject("listaPerfiles", userDelegate.getPerfiles());
+				model.addObject("listaPilotos", userDelegate.getPilotos());
+				request.setAttribute("message", "Error al actualizar usuario");	
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+
 }

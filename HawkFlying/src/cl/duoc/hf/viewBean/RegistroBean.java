@@ -1,6 +1,7 @@
 package cl.duoc.hf.viewBean;
 
 public class RegistroBean {
+	private Integer id;
 	private String username;
 	private String password;
 	private String nombre;
@@ -65,5 +66,11 @@ public class RegistroBean {
 	}
 	public void setFecha_Nacimiento(String fecha_Nacimiento) {
 		this.fecha_Nacimiento = fecha_Nacimiento;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
