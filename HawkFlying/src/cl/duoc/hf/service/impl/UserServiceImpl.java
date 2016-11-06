@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean isValidUser(String username, String password) {
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuario/login/{user}/{pwd}";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuario/login/{user}/{pwd}";
 	     
 	    Map<String, String> params = new HashMap<String, String>();
 	    params.put("user", username);
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean createUser(RegistroBean registroBean) {
 				
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
 	    try{
 		RestTemplate restTemplate = new RestTemplate();
 	    ResultadoInsertVO result = restTemplate.postForObject(uri,registroBean, ResultadoInsertVO.class);
@@ -57,14 +57,14 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public ArrayList<UsuarioVO> getUsuarios(){
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
+		String uri="https://database-clportafooliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.getForObject(uri, UsuariosResponse.class).getUsuarios();
 	}
 	
 	@Override
 	public void deleteUser(int id){
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
 		java.util.Map<String,String> params = new HashMap<String, String>();
         params.put("id", String.valueOf(id));
         RestTemplate restTemplate = new RestTemplate();
@@ -72,12 +72,12 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public ArrayList<PerfilVO> getPerfiles(){
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/perfilusuario/";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/perfilusuario/";
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.getForObject(uri, PerfilesResponse.class).getPerfiles();
 	}
 	public ArrayList<PilotoVO> getPilotos(){
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/piloto/";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/piloto/";
 		RestTemplate restTemplate = new RestTemplate();
 		ArrayList<PilotoVO> pilotos=restTemplate.getForObject(uri, PilotosResponse.class).getPilotos();
 		for (Iterator iterator = pilotos.iterator(); iterator.hasNext();) {
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService{
 		return pilotos;
 	}
 	public UsuarioVO getUsuario(String id) {
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
 	     
 	    Map<String, String> params = new HashMap<String, String>();
 	    params.put("id", id);
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean updateUser(RegistroBean registroBean) {
 				
-		String uri="https://database-clportafoliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/{id}";
 	    try{
 		RestTemplate restTemplate = new RestTemplate();
 		Map<String, String> param = new HashMap<String, String>();
