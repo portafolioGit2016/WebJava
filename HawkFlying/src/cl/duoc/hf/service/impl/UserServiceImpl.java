@@ -25,7 +25,7 @@ import cl.duoc.hf.vo.UsuariosResponse;
 public class UserServiceImpl implements UserService{
 
 	@Override
-	public boolean isValidUser(String username, String password) {
+	public LoginVO isValidUser(String username, String password) {
 		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuario/login/{user}/{pwd}";
 	     
 	    Map<String, String> params = new HashMap<String, String>();
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 	    LoginVO result = restTemplate.getForObject(uri, LoginVO.class, params);
     
 	    System.out.println(result);
-		return result.getCantidad()>0;
+		return result;
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public ArrayList<UsuarioVO> getUsuarios(){
-		String uri="https://database-clportafooliotrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.getForObject(uri, UsuariosResponse.class).getUsuarios();
 	}

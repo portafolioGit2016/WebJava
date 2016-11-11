@@ -10,16 +10,16 @@
   </nav>
   <nav class="main-menu">
     <ul>
-      <li>
-        <a href="#">
-          <i class="fa fa-home fa-2x"></i>
+      <li class="has-subnav">
+        <a href="${contextPath}/verPerfil">
+          <i class="fa fa-child fa-2x"></i>
           <span class="nav-text">
-            Ver perfil 
+            Ver perfil
           </span>
         </a>
       </li>
       <li class="has-subnav">
-        <a href="perfil.html">
+        <a href="${contextPath}/verPerfil">
           <i class="fa fa-child fa-2x"></i>
           <span class="nav-text">
             Ver perfil

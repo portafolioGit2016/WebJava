@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import cl.duoc.hf.service.UserService;
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.vo.LoginVO;
 
 public class LoginDelegate
 {
@@ -19,7 +20,7 @@ public class LoginDelegate
 		this.userService = userService;
 	}
 
-	public boolean isValidUser(String username, String password) throws SQLException
+	public LoginVO isValidUser(String username, String password) throws SQLException
 	{
 	    return userService.isValidUser(username, password);
 	}

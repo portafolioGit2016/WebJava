@@ -12,12 +12,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "cantidad" })
+@JsonPropertyOrder({ "cantidad" , "tipoperfil", "id_usuario"})
 
 public class LoginVO {
 
 	@JsonProperty("cantidad")
 	private Integer cantidad;
+	@JsonProperty("tipoperfil")
+	private Integer tipoPerfil;
+	@JsonProperty("id_usuario")
+	private Integer idUsuario;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -48,5 +52,23 @@ public class LoginVO {
 	@JsonAnySetter
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
+	}
+
+	@JsonProperty("tipoperfil")
+	public Integer getTipoPerfil() {
+		return tipoPerfil;
+	}
+
+	@JsonProperty("tipoperfil")
+	public void setTipoPerfil(Integer tipoPerfil) {
+		this.tipoPerfil = tipoPerfil;
+	}
+	@JsonProperty("id_usuario")
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	@JsonProperty("id_usuario")
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 }

@@ -21,10 +21,10 @@
 		<i class="fa fa-plane fa-5x"></i>
 		<form:form id="loginForm" method="post" action="login" modelAttribute="loginBean">
 			<div class="form-input">
-				<form:input id="username" name="username" path="username" placeholder="Nombre de usuario"/><br>
+				<form:input id="username" name="username" path="username" placeholder="Nombre de usuario" required="required"/><br>
 			</div>
 			<div class="form-input">
-				<form:password id="password" name="password" path="password" placeholder="Contraseña"/><br>
+				<form:password id="password" name="password" path="password" placeholder="Contraseña" required="required"/><br>
 			</div>
 			<input type="submit" name="submit" value="Iniciar sesión" class="btn-login">
 			<br>
