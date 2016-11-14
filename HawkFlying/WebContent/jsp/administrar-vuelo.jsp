@@ -29,15 +29,15 @@
 
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<%@include file="MenuInclude.jsp"%>
-		<div class="center">
+	<div class="center">
 		<span>${message}</span><br>
 	</div>
 	<div
 		style="width: 90%; height: 300px; margin-left: 100px; margin-top: 10px;">
 		<h2>Menu de vuelo</h2>
 		<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Nuevo
-			Vuelo</a>
-
+			Vuelo</a> <a class="waves-effect waves-light btn modal-trigger"
+			href="#modal2">Nuevo Plan de Vuelo</a>
 		<!-- Modal Structure -->
 		<div id="modal1" class="modal">
 			<div class="modal-content">
@@ -57,7 +57,8 @@
 							<div class="input-field col s12">
 								<form:input type="text" path="condicion"
 									placeholder="Condición vuelo" />
-								<label class="" for="condicion">Condicion De Vuelo (IFR o VFR)</label>
+								<label class="" for="condicion">Condicion De Vuelo (IFR
+									o VFR)</label>
 							</div>
 						</div>
 						<div class="row">
@@ -110,12 +111,125 @@
 			</div>
 
 		</div>
+		<div id="modal2" class="modal">
+			<div class="modal-content">
+				<form:form class="col s12" method="post" action="crearPlanVuelo"
+					modelAttribute="planVueloBean">
+					<h4>Crear nuevo Plan de Vuelo</h4>
+					<div class="row">
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input type="text" path="nombre" placeholder="Nombre" />
+								<label for="first_name">Nombre</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input id="etd" type="text" path="etd" placeholder="ETD" />
+								<label for="fecha">ETD</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input id="qrf" type="text" path="qrf" placeholder="QRF" />
+								<label for="fecha">QRF</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:select id="tipoVuelo" path="tipo_vuelo"
+									style="display:block!important">
+									<form:option value="" label="--- Seleccione Tipo Vuelo ---" />
+									<form:options items="${listaTiposVuelo}"
+										itemValue="idVuelotipo" itemLabel="tipoVuelo" />
+
+								</form:select>
+								<label class="labelSelect" for="email">Tipo Vuelo</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input id="identAeronave" type="text"
+									path="identificacion_aeronave"
+									placeholder="Identificacion Aeronave" />
+								<label for="fecha">Identificación Aeronave</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:select id="origen" path="aerodromo_salida"
+									style="display:block!important">
+									<form:option value="" label="--- Seleccione Origen ---" />
+									<form:options items="${listaAerodromos}"
+										itemValue="idAerodromo" itemLabel="nombre" />
+
+								</form:select>
+								<label class="labelSelect" for="email">Origen</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:select id="destino" path="aerodromo_destino"
+									style="display:block!important">
+									<form:option value="" label="--- Seleccione Destino ---" />
+									<form:options items="${listaAerodromos}"
+										itemValue="idAerodromo" itemLabel="nombre" />
+
+								</form:select>
+								<label class="labelSelect" for="email">Destino</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input id="velCrucero" type="text"
+									path="velocidad__crucero"
+									placeholder="Velocidad Crucero" />
+								<label for="fecha">Velocidad Crucero</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:select id="destino" path="reglas_vuelo"
+									style="display:block!important">
+									<form:option value="" label="--- Seleccione Regla ---" />
+									<form:option value="I" label="Instrumental" />
+									<form:option value="V" label="Visual" />
+									<form:option value="Y" label="Instrumental con cambio" />
+									<form:option value="Z" label="Visual con cambio" />
+								</form:select>
+								<label class="labelSelect" for="email">Regla Vuelo</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input id="descripcion" type="text"
+									path="descripcion"
+									placeholder="Descripción" />
+								<label for="fecha">Descripción</label>
+							</div>
+						</div>						
+					</div>
+					<div class="modal-footer">
+						<button type="submit"
+							class=" modal-action modal-close waves-effect waves-green btn-flat">Crear
+							Plan de vuelo</button>
+					</div>
+				</form:form>
+			</div>
+
+		</div>
 	</div>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.modal-trigger').leanModal();
 			$("#fechaVuelo").datepicker({
+				dateFormat : "yy-mm-dd"
+			});
+			$("#etd").datepicker({
+				dateFormat : "yy-mm-dd"
+			});
+			$("#qrf").datepicker({
 				dateFormat : "yy-mm-dd"
 			});
 		});

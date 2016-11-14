@@ -6,6 +6,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import cl.duoc.hf.service.VueloService;
+import cl.duoc.hf.viewBean.PlanVueloBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoResponse;
 import cl.duoc.hf.vo.AerodromoVO;
@@ -14,6 +15,8 @@ import cl.duoc.hf.vo.AeronaveVO;
 import cl.duoc.hf.vo.PlanVueloResponse;
 import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.ResultadoInsertVO;
+import cl.duoc.hf.vo.TipoVueloResponse;
+import cl.duoc.hf.vo.TipoVueloVO;
 import cl.duoc.hf.vo.VueloResponse;
 import cl.duoc.hf.vo.VueloVO;
 
@@ -70,5 +73,25 @@ public class VueloServiceImpl implements VueloService{
 		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/plan_vuelo/";
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.getForObject(uri, PlanVueloResponse.class).getPlanesDeVuelo();
+	}
+	@Override
+	public ArrayList<TipoVueloVO> getTiposDeVuelo(){
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/tipovuelo";
+		RestTemplate restTemplate = new RestTemplate();
+		return restTemplate.getForObject(uri, TipoVueloResponse.class).getTiposDeVuelo();
+	}
+	@Override
+	public boolean createPlandeVuelo(PlanVueloBean planDevueloBean){
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/plan_vuelo/";
+	    try{
+		RestTemplate restTemplate = new RestTemplate();
+	    ResultadoInsertVO result = restTemplate.postForObject(uri,planDevueloBean, ResultadoInsertVO.class);
+    
+	    System.out.println(result);
+	    return result.getID()!=null;
+	    }catch(HttpServerErrorException e){
+	    	System.out.println(e.getResponseHeaders());
+	    	return false;
+	    }
 	}
 }

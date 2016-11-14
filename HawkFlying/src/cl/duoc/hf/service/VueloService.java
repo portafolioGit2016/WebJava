@@ -2,10 +2,12 @@ package cl.duoc.hf.service;
 
 import java.util.ArrayList;
 
+import cl.duoc.hf.viewBean.PlanVueloBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveVO;
 import cl.duoc.hf.vo.PlanVueloVO;
+import cl.duoc.hf.vo.TipoVueloVO;
 import cl.duoc.hf.vo.VueloVO;
 
 /**
@@ -22,4 +24,6 @@ public  interface VueloService
 	public ArrayList<AerodromoVO> getAerodromos();
 	public ArrayList<AeronaveVO> getAeronaves();
 	public ArrayList<PlanVueloVO> getPlanesDeVuelo();
+	public ArrayList<TipoVueloVO> getTiposDeVuelo();
+	public boolean createPlandeVuelo(PlanVueloBean planDevueloBean);
 }
