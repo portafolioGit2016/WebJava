@@ -9,6 +9,10 @@ import cl.duoc.hf.service.VueloService;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoResponse;
 import cl.duoc.hf.vo.AerodromoVO;
+import cl.duoc.hf.vo.AeronaveResponse;
+import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.PlanVueloResponse;
+import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.ResultadoInsertVO;
 import cl.duoc.hf.vo.VueloResponse;
 import cl.duoc.hf.vo.VueloVO;
@@ -55,5 +59,16 @@ public class VueloServiceImpl implements VueloService{
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.getForObject(uri, AerodromoResponse.class).getAerodromos();
 	}
-
+	@Override
+	public ArrayList<AeronaveVO> getAeronaves() {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/aeronave/";
+		RestTemplate restTemplate = new RestTemplate();
+		return restTemplate.getForObject(uri, AeronaveResponse.class).getAeronaves();
+	}
+	@Override
+	public ArrayList<PlanVueloVO> getPlanesDeVuelo() {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/plan_vuelo/";
+		RestTemplate restTemplate = new RestTemplate();
+		return restTemplate.getForObject(uri, PlanVueloResponse.class).getPlanesDeVuelo();
+	}
 }

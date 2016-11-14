@@ -2,11 +2,11 @@ package cl.duoc.hf.delegate;
 
 import java.util.ArrayList;
 
-import cl.duoc.hf.service.UserService;
 import cl.duoc.hf.service.VueloService;
-import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
+import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.VueloVO;
 /**
  * @author Jocelyn Poblete
@@ -44,5 +44,12 @@ public class VueloDelegate {
 		return vueloService.createVuelo(vueloBean);
 	}
 	
-
+	public ArrayList<AeronaveVO> getAeronaves()
+	{
+		return vueloService.getAeronaves();
+	}
+	public ArrayList<PlanVueloVO> getPlanesDeVuelo()
+	{
+		return vueloService.getPlanesDeVuelo();
+	}
 }

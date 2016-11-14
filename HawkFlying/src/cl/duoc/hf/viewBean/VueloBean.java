@@ -4,10 +4,9 @@ public class VueloBean {
 	private Integer nro_vuelo;
 	private Integer condicion;
 	private Integer total_tv;
-	private Integer origen;
-	private Integer destino;
 	private String fecha;
 	private Integer id_mision;
+	private Integer idAeronave;
 	
 	public Integer getNro_vuelo() {
 		return nro_vuelo;
@@ -27,18 +26,6 @@ public class VueloBean {
 	public void setTotal_tv(Integer total_tv) {
 		this.total_tv = total_tv;
 	}
-	public Integer getOrigen() {
-		return origen;
-	}
-	public void setOrigen(Integer origen) {
-		this.origen = origen;
-	}
-	public Integer getDestino() {
-		return destino;
-	}
-	public void setDestino(Integer destino) {
-		this.destino = destino;
-	}
 	public String getFecha() {
 		return fecha;
 	}
@@ -50,6 +37,12 @@ public class VueloBean {
 	}
 	public void setId_mision(Integer id_mision) {
 		this.id_mision = id_mision;
+	}
+	public Integer getIdAeronave() {
+		return idAeronave;
+	}
+	public void setIdAeronave(Integer idAeronave) {
+		this.idAeronave = idAeronave;
 	}
 	
 	/**

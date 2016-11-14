@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
+import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.VueloVO;
 
 /**
@@ -18,5 +20,6 @@ public  interface VueloService
 	public void deleteVuelo(int id);
 	public boolean updateVuelo(VueloBean vueloBean);
 	public ArrayList<AerodromoVO> getAerodromos();
-	
+	public ArrayList<AeronaveVO> getAeronaves();
+	public ArrayList<PlanVueloVO> getPlanesDeVuelo();
 }

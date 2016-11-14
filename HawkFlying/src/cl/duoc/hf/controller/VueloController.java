@@ -34,7 +34,8 @@ public class VueloController {
 	{
 		ModelAndView model = new ModelAndView("administrar-vuelo");
 		model.addObject("listaAerodromos", vueloDelegate.getAerodromos());
-		
+		model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
+		model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 		VueloBean vueloBean = new VueloBean();
 		
 		model.addObject("vueloBean", vueloBean);
@@ -56,15 +57,19 @@ public class VueloController {
 			{
 				System.out.println("Registro Creado Correctamente");
 				model = new ModelAndView("administrar-vuelo");
-				model.addObject("listaVuelo",vueloDelegate.getVuelos());
-				request.setAttribute("message", "Usuario creado correctamente");
+				vueloBean = new VueloBean();
+				model.addObject("vueloBean", vueloBean);
+				model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
+				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
+				request.setAttribute("message", "Vuelo creado correctamente");
 			}
 			else
 			{
 				model = new ModelAndView("administrar-vuelo");
 				model.addObject("vueloBean", vueloBean);
-				model.addObject("listaVuelo",vueloDelegate.getVuelos());
-				request.setAttribute("message", "Error al crear usuario");
+				model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
+				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
+				request.setAttribute("message", "Error al crear vuelo");
 			}
 			
 		} catch (Exception e) {
