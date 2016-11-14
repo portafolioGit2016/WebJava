@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import cl.duoc.hf.service.UserService;
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.LoginVO;
 import cl.duoc.hf.vo.PerfilVO;
 import cl.duoc.hf.vo.PerfilesResponse;
@@ -21,6 +22,8 @@ import cl.duoc.hf.vo.PilotosResponse;
 import cl.duoc.hf.vo.ResultadoInsertVO;
 import cl.duoc.hf.vo.UsuarioVO;
 import cl.duoc.hf.vo.UsuariosResponse;
+import cl.duoc.hf.vo.VueloResponse;
+import cl.duoc.hf.vo.VueloVO;
 
 public class UserServiceImpl implements UserService{
 
@@ -123,4 +126,6 @@ public class UserServiceImpl implements UserService{
 //		//UsuarioVO usuario=usr.getUsuario("2711");
 //		System.out.println("" + pilotos);
 //	}
+
+	
 }

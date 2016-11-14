@@ -2,10 +2,10 @@ package cl.duoc.hf.viewBean;
 
 public class VueloBean {
 	private Integer nro_vuelo;
-	private String condicion;
+	private Integer condicion;
 	private Integer total_tv;
-	private String origen;
-	private String destino;
+	private Integer origen;
+	private Integer destino;
 	private String fecha;
 	private Integer id_mision;
 	
@@ -15,10 +15,10 @@ public class VueloBean {
 	public void setNro_vuelo(Integer nro_vuelo) {
 		this.nro_vuelo = nro_vuelo;
 	}
-	public String getCondicion() {
+	public Integer getCondicion() {
 		return condicion;
 	}
-	public void setCondicion(String condicion) {
+	public void setCondicion(Integer condicion) {
 		this.condicion = condicion;
 	}
 	public Integer getTotal_tv() {
@@ -27,16 +27,16 @@ public class VueloBean {
 	public void setTotal_tv(Integer total_tv) {
 		this.total_tv = total_tv;
 	}
-	public String getOrigen() {
+	public Integer getOrigen() {
 		return origen;
 	}
-	public void setOrigen(String origen) {
+	public void setOrigen(Integer origen) {
 		this.origen = origen;
 	}
-	public String getDestino() {
+	public Integer getDestino() {
 		return destino;
 	}
-	public void setDestino(String destino) {
+	public void setDestino(Integer destino) {
 		this.destino = destino;
 	}
 	public String getFecha() {
@@ -52,7 +52,7 @@ public class VueloBean {
 		this.id_mision = id_mision;
 	}
 	
-	
+	/**
 	public String origenVueloDisponible(VueloBean vuelo){
 		if(vuelo.origen == "Santiago" || vuelo.origen == "Puerto Montt" || vuelo.origen == "Temuco"){
 			return "Disponible";
@@ -68,4 +68,5 @@ public class VueloBean {
 			return "Destino no disponible";
 		}
 	}
+	*/
 }

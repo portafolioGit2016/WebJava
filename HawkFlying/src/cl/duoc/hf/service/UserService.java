@@ -3,14 +3,16 @@ package cl.duoc.hf.service;
 import java.util.ArrayList;
 
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.LoginVO;
 import cl.duoc.hf.vo.PerfilVO;
 import cl.duoc.hf.vo.PilotoVO;
 import cl.duoc.hf.vo.UsuarioVO;
+import cl.duoc.hf.vo.VueloVO;
 
 /**
- * @author CENTAUR
- *
+ * @author Jocelyn Poblete
+ *	Interfaz de metodos que se implementan en Delegate USUARIO
  */
 public interface UserService
 {
@@ -22,4 +24,5 @@ public interface UserService
 	public void deleteUser(int id);
 	public ArrayList<PilotoVO> getPilotos();
 	public boolean updateUser(RegistroBean registroBean);
+	
 }

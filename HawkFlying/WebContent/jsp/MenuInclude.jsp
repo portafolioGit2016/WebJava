@@ -27,7 +27,7 @@
         </a>
       </li>
       <li class="has-subnav">
-        <a href="menu.html">
+        <a href="${contextPath}/administrar-vuelo">
           <i class="fa fa-plane fa-2x"></i>
           <span class="nav-text">
             Menú de vuelo
