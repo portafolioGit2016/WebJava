@@ -2,11 +2,12 @@ package cl.duoc.hf.viewBean;
 
 public class VueloBean {
 	private Integer nro_vuelo;
-	private Integer condicion;
+	private String condicion;
 	private Integer total_tv;
 	private String fecha;
 	private Integer id_mision;
 	private Integer idAeronave;
+	private String tripulacion;
 	
 	public Integer getNro_vuelo() {
 		return nro_vuelo;
@@ -14,10 +15,10 @@ public class VueloBean {
 	public void setNro_vuelo(Integer nro_vuelo) {
 		this.nro_vuelo = nro_vuelo;
 	}
-	public Integer getCondicion() {
+	public String getCondicion() {
 		return condicion;
 	}
-	public void setCondicion(Integer condicion) {
+	public void setCondicion(String condicion) {
 		this.condicion = condicion;
 	}
 	public Integer getTotal_tv() {
@@ -43,6 +44,12 @@ public class VueloBean {
 	}
 	public void setIdAeronave(Integer idAeronave) {
 		this.idAeronave = idAeronave;
+	}
+	public String getTripulacion() {
+		return tripulacion;
+	}
+	public void setTripulacion(String tripulacion) {
+		this.tripulacion = tripulacion;
 	}
 	
 	/**

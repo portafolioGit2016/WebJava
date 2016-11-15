@@ -11,6 +11,7 @@ public class PlanVueloBean {
 	private String reglas_vuelo;
 	private Integer aerodromo_destino;
 	private String descripcion;
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -71,4 +72,5 @@ public class PlanVueloBean {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
 }

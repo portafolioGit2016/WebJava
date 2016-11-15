@@ -20,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "origen",
 "destino",
 "fecha",
-"id_mision"
+"id_mision",
+"tripulacion"
 })
 public class VueloVO {
 
@@ -40,6 +41,8 @@ private String destino;
 private String fecha;
 @JsonProperty("id_mision")
 private Integer idMision;
+@JsonProperty("tripulacion")
+private String tripulacion;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -202,6 +205,26 @@ return idMision;
 public void setIdMision(Integer idMision) {
 this.idMision = idMision;
 }
+/**
+* 
+* @return
+* The tripulacion
+*/
+@JsonProperty("tripulacion")
+public String getTripulacion() {
+return tripulacion;
+}
+
+/**
+* 
+* @param tripulacion
+* The tripulacion
+*/
+@JsonProperty("tripulacion")
+public void setTripulacion(String tripulacion) {
+this.tripulacion = tripulacion;
+}
+
 
 @JsonAnyGetter
 public Map<String, Object> getAdditionalProperties() {
