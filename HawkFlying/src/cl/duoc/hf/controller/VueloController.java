@@ -1,6 +1,7 @@
 package cl.duoc.hf.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,12 +18,16 @@ import org.springframework.web.servlet.ModelAndView;
 import cl.duoc.hf.delegate.UserDelegate;
 import cl.duoc.hf.delegate.VueloDelegate;
 import cl.duoc.hf.viewBean.PlanVueloBean;
-import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
+import cl.duoc.hf.vo.AerodromoVO;
+import cl.duoc.hf.vo.AeronaveVO;
 import cl.duoc.hf.vo.LoginVO;
 import cl.duoc.hf.vo.PilotoVO;
+import cl.duoc.hf.vo.PlanVueloVO;
+import cl.duoc.hf.vo.TipoVueloVO;
 import cl.duoc.hf.vo.UsuarioVO;
+import cl.duoc.hf.vo.VueloVO;
 /**
  * @author Jocelyn Poblete
  *	Metodos de los objetos que utiliza el modal que sale parahacer put, get que estan mandando desde jsp
@@ -34,31 +39,49 @@ public class VueloController {
 	private UserDelegate userDelegate;
 	@Autowired
 	private VueloDelegate vueloDelegate;	
+	
+	@ModelAttribute("listaAerodromos")
+	public ArrayList<AerodromoVO> getAerodromos(){
+		return vueloDelegate.getAerodromos();
+	}
+	@ModelAttribute("listaAeronaves")
+	public ArrayList<AeronaveVO> getAeronaves(){
+		return vueloDelegate.getAeronaves();
+	}
+	@ModelAttribute("listaPlanesDeVuelo")
+	public ArrayList<PlanVueloVO> getPlanesDeVuelo(){
+		return vueloDelegate.getPlanesDeVuelo();
+	}
+	@ModelAttribute("listaTiposVuelo")
+	public ArrayList<TipoVueloVO> getTiposDeVuelo(){
+		return vueloDelegate.getTiposDeVuelo();
+	}
+	@ModelAttribute("listaVuelos")
+	public ArrayList<VueloVO> getVuelos(){
+		return vueloDelegate.getVuelos();
+	}
+	@ModelAttribute("listaCopiloto")
+	public ArrayList<PilotoVO> getPilotos(){
+		return userDelegate.getPilotos();
+	}
 	@RequestMapping(value="/administrar-vuelo",method=RequestMethod.GET)
 	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response)
 	{
 		ModelAndView model = new ModelAndView("administrar-vuelo");
 		LoginVO datosUsuario=(LoginVO)request.getSession().getAttribute("usuarioLogeado");
 		UsuarioVO usuario=userDelegate.getUsuario(datosUsuario.getIdUsuario().toString());
-		model.addObject("listaAerodromos", vueloDelegate.getAerodromos());
-		model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
-		model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
-		model.addObject("listaTiposVuelo", vueloDelegate.getTiposDeVuelo());
 		VueloBean vueloBean = new VueloBean();
 		PlanVueloBean planVueloBean=new PlanVueloBean();
 		
 		model.addObject("vueloBean", vueloBean);
 		model.addObject("planVueloBean", planVueloBean);
-		model.addObject("listaVuelos",vueloDelegate.getVuelos());
-		model.addObject("listaCopiloto",userDelegate.getPilotos());
 		model.addObject("usuario", usuario);
 		return model;
 	}
 	@RequestMapping(value="/administrar-vuelo",method=RequestMethod.POST)
 	
-	public ModelAndView crearVuelo(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("vueloBean")VueloBean vueloBean)
+	public ModelAndView crearVuelo(HttpServletRequest request, HttpServletResponse response,ModelAndView model, @ModelAttribute("vueloBean")VueloBean vueloBean)
 	{
-		ModelAndView model= null;
 		try {
 			SimpleDateFormat sfO=new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha=sfO.parse(vueloBean.getFecha());
@@ -85,25 +108,17 @@ public class VueloController {
 				tripulacion.setTiempoPiloto(vueloBean.getTiempoPilotoC());
 				vueloDelegate.createTripulacion(tripulacion);
 				System.out.println("Registro Creado Correctamente");
-				model = new ModelAndView("administrar-vuelo");
 				vueloBean = new VueloBean();
 				PlanVueloBean planVueloBean=new PlanVueloBean();
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
-				model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
-				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
-				model.addObject("listaTiposVuelo", vueloDelegate.getTiposDeVuelo());
 				request.setAttribute("message", "Vuelo creado correctamente");
 			}
 			else
 			{
-				model = new ModelAndView("administrar-vuelo");
 				PlanVueloBean planVueloBean=new PlanVueloBean();
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
-				model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
-				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
-				model.addObject("listaTiposVuelo", vueloDelegate.getTiposDeVuelo());
 				request.setAttribute("message", "Error al crear vuelo");
 			}
 			
@@ -116,9 +131,8 @@ public class VueloController {
 	
 @RequestMapping(value="/crearPlanVuelo",method=RequestMethod.POST)
 	
-	public ModelAndView crearPlanVuelo(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("planVueloBean")PlanVueloBean planVueloBean)
+	public ModelAndView crearPlanVuelo(HttpServletRequest request, HttpServletResponse response,ModelAndView model, @ModelAttribute("planVueloBean")PlanVueloBean planVueloBean)
 	{
-		ModelAndView model= null;
 		try {
 			SimpleDateFormat sfO=new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha=sfO.parse(planVueloBean.getEtd());
@@ -130,26 +144,18 @@ public class VueloController {
 			if(isCreated)
 			{
 				System.out.println("Registro Creado Correctamente");
-				model = new ModelAndView("administrar-vuelo");
 				VueloBean vueloBean = new VueloBean();
 				planVueloBean=new PlanVueloBean();
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
-				model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
-				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
-				model.addObject("listaTiposVuelo", vueloDelegate.getTiposDeVuelo());
 				request.setAttribute("message", "Plan de Vuelo creado correctamente");
 			}
 			else
 			{
-				model = new ModelAndView("administrar-vuelo");
 				planVueloBean=new PlanVueloBean();
 				VueloBean vueloBean = new VueloBean();
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
-				model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
-				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
-				model.addObject("listaTiposVuelo", vueloDelegate.getTiposDeVuelo());
 				request.setAttribute("message", "Error al crear plan de vuelo");
 			}
 			
