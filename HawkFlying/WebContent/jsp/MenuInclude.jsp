@@ -1,8 +1,11 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav>
     <div class="nav-wrapper">
       <a href="${contextPath}/welcome" class="brand-logo"><i class="fa fa-plane fa-2x"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="${contextPath}/adminUsuarios">Usuarios</a></li>
+		<c:if test="${sessionScope.usuarioLogeado.tipoPerfil=='1'}">
+       	 <li><a href="${contextPath}/adminUsuarios">Usuarios</a></li>
+        </c:if>
         <li><a href="badges.html">Opción 2</a></li>
         <li><a href="collapsible.html">Opción 3</a></li>
       </ul>
@@ -26,6 +29,7 @@
           </span>
         </a>
       </li>
+      <c:if test="${sessionScope.usuarioLogeado.tipoPerfil=='2'}">
       <li class="has-subnav">
         <a href="${contextPath}/administrar-vuelo">
           <i class="fa fa-plane fa-2x"></i>
@@ -34,6 +38,7 @@
           </span>
         </a>
       </li>
+      </c:if>
       <li class="has-subnav">
           <a href="#">
             <i class="fa fa-fighter-jet fa-2x"></i>
