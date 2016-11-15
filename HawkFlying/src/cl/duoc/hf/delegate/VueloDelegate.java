@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import cl.duoc.hf.service.VueloService;
 import cl.duoc.hf.viewBean.PlanVueloBean;
+import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveVO;
@@ -42,10 +43,13 @@ public class VueloDelegate {
 		return vueloService.updateVuelo(vueloBean);
 	}
 	
-	public boolean createVuelo(VueloBean vueloBean){
+	public Integer createVuelo(VueloBean vueloBean){
 		return vueloService.createVuelo(vueloBean);
 	}
 	
+	public boolean createTripulacion(TripulacionBean tripulacionBean){
+		return vueloService.createTripulacion(tripulacionBean);
+	}
 	public ArrayList<AeronaveVO> getAeronaves()
 	{
 		return vueloService.getAeronaves();

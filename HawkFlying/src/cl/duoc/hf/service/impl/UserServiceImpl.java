@@ -127,5 +127,20 @@ public class UserServiceImpl implements UserService{
 //		System.out.println("" + pilotos);
 //	}
 
+	@Override
+	public PilotoVO getPilotoxIdUsuario(Integer idUsuario) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/piloto/{idUsuario}";
+	     
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("idUsuario", idUsuario.toString());
+	   
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    PilotoVO result = restTemplate.getForObject(uri, PilotoVO.class, params);
+    
+	    System.out.println(result);
+		return result;
+	}
+
 	
 }

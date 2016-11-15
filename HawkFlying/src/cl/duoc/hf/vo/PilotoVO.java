@@ -20,16 +20,10 @@ public class PilotoVO {
 	private Integer idPiloto;
 	@JsonProperty("fecha_vencimientomae")
 	private String fechaVencimientomae;
-	@JsonProperty("num_licencia")
-	private Integer numLicencia;
 	@JsonProperty("hora_total_vuelo")
-	private Integer horaTotalVuelo;
-	@JsonProperty("estado_licencia")
-	private String estadoLicencia;
+	private Integer horaTotalVuelo;	
 	@JsonProperty("id_usuario")
-	private Integer idUsuario;
-	@JsonProperty("tipolicencia")
-	private Integer tipolicencia;
+	private Integer idUsuario;	
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	@JsonIgnore
@@ -81,26 +75,7 @@ public class PilotoVO {
 		this.fechaVencimientomae = fechaVencimientomae;
 	}
 
-	/**
-	 * 
-	 * @return The numLicencia
-	 */
-	@JsonProperty("num_licencia")
-	public Integer getNumLicencia() {
-		return numLicencia;
-	}
-
-	/**
-	 * 
-	 * @param numLicencia
-	 *            The num_licencia
-	 */
-	@JsonProperty("num_licencia")
-	public void setNumLicencia(Integer numLicencia) {
-		this.numLicencia = numLicencia;
-	}
-
-	/**
+		/**
 	 * 
 	 * @return The horaTotalVuelo
 	 */
@@ -121,25 +96,6 @@ public class PilotoVO {
 
 	/**
 	 * 
-	 * @return The estadoLicencia
-	 */
-	@JsonProperty("estado_licencia")
-	public String getEstadoLicencia() {
-		return estadoLicencia;
-	}
-
-	/**
-	 * 
-	 * @param estadoLicencia
-	 *            The estado_licencia
-	 */
-	@JsonProperty("estado_licencia")
-	public void setEstadoLicencia(String estadoLicencia) {
-		this.estadoLicencia = estadoLicencia;
-	}
-
-	/**
-	 * 
 	 * @return The idUsuario
 	 */
 	@JsonProperty("id_usuario")
@@ -155,25 +111,6 @@ public class PilotoVO {
 	@JsonProperty("id_usuario")
 	public void setUsuario(Integer idUsuario) { 
 		this.idUsuario = idUsuario;
-	}
-
-	/**
-	 * 
-	 * @return The tipolicencia
-	 */
-	@JsonProperty("tipolicencia")
-	public Integer getTipolicencia() {
-		return tipolicencia;
-	}
-
-	/**
-	 * 
-	 * @param tipolicencia
-	 *            The tipolicencia
-	 */
-	@JsonProperty("tipolicencia")
-	public void setTipolicencia(Integer tipolicencia) {
-		this.tipolicencia = tipolicencia;
 	}
 
 	@JsonAnyGetter

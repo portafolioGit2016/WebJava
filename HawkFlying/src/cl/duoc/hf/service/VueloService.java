@@ -3,6 +3,7 @@ package cl.duoc.hf.service;
 import java.util.ArrayList;
 
 import cl.duoc.hf.viewBean.PlanVueloBean;
+import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveVO;
@@ -18,7 +19,7 @@ public  interface VueloService
 {
 
 	public ArrayList<VueloVO> getVuelos();
-	public boolean createVuelo(VueloBean vueloBean);
+	public Integer createVuelo(VueloBean vueloBean);
 	public void deleteVuelo(int id);
 	public boolean updateVuelo(VueloBean vueloBean);
 	public ArrayList<AerodromoVO> getAerodromos();
@@ -26,4 +27,5 @@ public  interface VueloService
 	public ArrayList<PlanVueloVO> getPlanesDeVuelo();
 	public ArrayList<TipoVueloVO> getTiposDeVuelo();
 	public boolean createPlandeVuelo(PlanVueloBean planDevueloBean);
+	public boolean createTripulacion(TripulacionBean tripulacionBean);
 }

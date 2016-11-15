@@ -24,6 +24,7 @@
 	<link href="${perfilCss}" rel="stylesheet" />
 </head>
 <body>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@include file="MenuInclude.jsp"%>
   <div class="container-perfil">
     <h2> Datos </h2>

@@ -24,5 +24,5 @@ public interface UserService
 	public void deleteUser(int id);
 	public ArrayList<PilotoVO> getPilotos();
 	public boolean updateUser(RegistroBean registroBean);
-	
+	public PilotoVO getPilotoxIdUsuario(Integer idUsuario);
 }

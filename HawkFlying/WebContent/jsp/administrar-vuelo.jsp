@@ -50,7 +50,7 @@
 							<div class="input-field col s12">
 								<form:input type="text" path="nro_vuelo"
 									placeholder="Numero vuelo" />
-								<label for="first_name">Numero vuelo</label>
+								<label for="first_name">NUMERO VUELO</label>
 							</div>
 						</div>
 						<div class="row">
@@ -62,21 +62,21 @@
 									<form:option value="VFR" label="VFR" />
 									
 								</form:select>							
-								<label class="labelSelect" for="condicion">Condicion De Vuelo (IFR
+								<label class="labelSelect" for="condicion">CONDICION DE VUELO (IFR
 									o VFR)</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
 								<form:input type="text" path="total_tv" placeholder="Total tv" required="required"/>
-								<label for="totaltv">Total Tiempo de Vuelo</label>
+								<label for="totaltv">TOTAL TIEMPO dE VUELO</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
 								<form:input id="fechaVuelo" type="text" path="fecha"
 									placeholder="Fecha" required="required" />
-								<label for="fecha">Fecha Vuelo</label>
+								<label for="fecha">FECHA VUELO</label>
 							</div>
 						</div>
 						<div class="row">
@@ -88,7 +88,7 @@
 										itemValue="idMision" itemLabel="nombre" />
 
 								</form:select>
-								<label class="labelSelect" for="Mision">Mision</label>
+								<label class="labelSelect" for="Mision">MISION</label>
 							</div>
 						</div>
 						<div class="row">
@@ -108,17 +108,46 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<form:select id="destino" path="tripulacion"
-									style="display:block!important" required="required">
-									<form:option value="" label="--- Seleccione tripulacion ---" />
-									<form:option value="Piloto" label="Piloto" />
-									<form:option value="Copiloto" label="Copiloto" />
-									
-								</form:select>
-								<label class="labelSelect" for="tripulacion">Tripulante</label>
+								<input disabled  id="tripulacion" type="text" class="validate" value="<c:out value='${usuario.nombre}'> </c:out>">
+								<label for="tripulacion">PILOTO</label>
 							</div>
-						</div>		
-									
+						</div>	
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input type="text" path="tiempoPilotoP" placeholder="tiempo piloto" required="required"/>
+								<label for="first_name">Nro. Horas Piloto</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input type="text" path="tiempoCopilotoP" placeholder="tiempo copiloto" required="required"/>
+								<label for="first_name">Nro. Horas Copiloto</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:select id="piloto" path="idCopiloto"
+									style="display:block!important" required="required">
+									<form:option value="" label="--- Seleccione Copiloto ---" />
+									<form:options items="${listaCopiloto}"
+										itemValue="idPiloto" itemLabel="usuarioVO.nombre" />
+																										
+								</form:select>
+								<label class="labelSelect" for="Mision">COPILOTO</label>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input type="text" path="tiempoPilotoC" placeholder="tiempo piloto" required="required"/>
+								<label for="first_name">Nro. Horas Piloto</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<form:input type="text" path="tiempoCopilotoC" placeholder="tiempo copiloto" required="required"/>
+								<label for="first_name">Nro. Horas Copiloto</label>
+							</div>
+						</div>			
 					</div>
 					<div class="modal-footer">
 						<button type="submit"

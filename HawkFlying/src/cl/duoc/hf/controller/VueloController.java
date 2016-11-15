@@ -18,7 +18,11 @@ import cl.duoc.hf.delegate.UserDelegate;
 import cl.duoc.hf.delegate.VueloDelegate;
 import cl.duoc.hf.viewBean.PlanVueloBean;
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
+import cl.duoc.hf.vo.LoginVO;
+import cl.duoc.hf.vo.PilotoVO;
+import cl.duoc.hf.vo.UsuarioVO;
 /**
  * @author Jocelyn Poblete
  *	Metodos de los objetos que utiliza el modal que sale parahacer put, get que estan mandando desde jsp
@@ -34,15 +38,20 @@ public class VueloController {
 	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response)
 	{
 		ModelAndView model = new ModelAndView("administrar-vuelo");
+		LoginVO datosUsuario=(LoginVO)request.getSession().getAttribute("usuarioLogeado");
+		UsuarioVO usuario=userDelegate.getUsuario(datosUsuario.getIdUsuario().toString());
 		model.addObject("listaAerodromos", vueloDelegate.getAerodromos());
 		model.addObject("listaAeronaves", vueloDelegate.getAeronaves());
 		model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 		model.addObject("listaTiposVuelo", vueloDelegate.getTiposDeVuelo());
 		VueloBean vueloBean = new VueloBean();
 		PlanVueloBean planVueloBean=new PlanVueloBean();
+		
 		model.addObject("vueloBean", vueloBean);
 		model.addObject("planVueloBean", planVueloBean);
 		model.addObject("listaVuelos",vueloDelegate.getVuelos());
+		model.addObject("listaCopiloto",userDelegate.getPilotos());
+		model.addObject("usuario", usuario);
 		return model;
 	}
 	@RequestMapping(value="/administrar-vuelo",method=RequestMethod.POST)
@@ -55,9 +64,26 @@ public class VueloController {
 			Date fecha=sfO.parse(vueloBean.getFecha());
 			SimpleDateFormat sf=new SimpleDateFormat("dd-MMM-yy",Locale.US);
 			vueloBean.setFecha(sf.format(fecha).toUpperCase());
-			boolean isCreated = vueloDelegate.createVuelo(vueloBean);
-			if(isCreated)
+			Integer idVuelo = vueloDelegate.createVuelo(vueloBean);
+			if(idVuelo!=null)
 			{
+				//cargndo las horas del piloto.
+				LoginVO datosUsuario=(LoginVO)request.getSession().getAttribute("usuarioLogeado");
+				PilotoVO piloto= userDelegate.getPilotoxIdUsuario(datosUsuario.getIdUsuario());
+				TripulacionBean tripulacion = new TripulacionBean();
+				tripulacion.setIdPiloto(piloto.getIdPiloto());
+				tripulacion.setIdVuelo(idVuelo);
+				tripulacion.setTiempoCopiloto(vueloBean.getTiempoCopilotoP());
+				tripulacion.setTiempoPiloto(vueloBean.getTiempoPilotoP());
+				vueloDelegate.createTripulacion(tripulacion);
+				
+				//cargando las horas del copiloto.
+				tripulacion = new TripulacionBean();
+				tripulacion.setIdPiloto(vueloBean.getIdCopiloto());
+				tripulacion.setIdVuelo(idVuelo);
+				tripulacion.setTiempoCopiloto(vueloBean.getTiempoCopilotoC());
+				tripulacion.setTiempoPiloto(vueloBean.getTiempoPilotoC());
+				vueloDelegate.createTripulacion(tripulacion);
 				System.out.println("Registro Creado Correctamente");
 				model = new ModelAndView("administrar-vuelo");
 				vueloBean = new VueloBean();

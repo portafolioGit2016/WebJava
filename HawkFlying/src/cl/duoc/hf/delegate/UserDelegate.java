@@ -36,6 +36,9 @@ public class UserDelegate
 	public UsuarioVO getUsuario(String id){
 		return userService.getUsuario(id);
 	}
+	public PilotoVO getPilotoxIdUsuario(Integer idUsuario){
+		return userService.getPilotoxIdUsuario(idUsuario);
+	}
 	public boolean updateUser(RegistroBean registroBean){
 		return userService.updateUser(registroBean);
 	}

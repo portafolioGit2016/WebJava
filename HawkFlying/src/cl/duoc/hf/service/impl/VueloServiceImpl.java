@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import cl.duoc.hf.service.VueloService;
 import cl.duoc.hf.viewBean.PlanVueloBean;
+import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoResponse;
 import cl.duoc.hf.vo.AerodromoVO;
@@ -39,17 +40,17 @@ public class VueloServiceImpl implements VueloService{
 		return false;
 	}
 
-	public boolean createVuelo(VueloBean vueloBean) {
+	public Integer createVuelo(VueloBean vueloBean) {
 		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/vuelos/";
 	    try{
 		RestTemplate restTemplate = new RestTemplate();
 	    ResultadoInsertVO result = restTemplate.postForObject(uri,vueloBean, ResultadoInsertVO.class);
     
 	    System.out.println(result);
-	    return result.getID()!=null;
+	    return Integer.valueOf(result.getID());
 	    }catch(HttpServerErrorException e){
 	    	System.out.println(e.getResponseHeaders());
-	    	return false;
+	    	return null;
 	    }
 	}
 	public VueloServiceImpl() {
@@ -86,6 +87,21 @@ public class VueloServiceImpl implements VueloService{
 	    try{
 		RestTemplate restTemplate = new RestTemplate();
 	    ResultadoInsertVO result = restTemplate.postForObject(uri,planDevueloBean, ResultadoInsertVO.class);
+    
+	    System.out.println(result);
+	    return result.getID()!=null;
+	    }catch(HttpServerErrorException e){
+	    	System.out.println(e.getResponseHeaders());
+	    	return false;
+	    }
+	}
+
+	@Override
+	public boolean createTripulacion(TripulacionBean tripulacionBean) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/tripulacion/";
+	    try{
+		RestTemplate restTemplate = new RestTemplate();
+	    ResultadoInsertVO result = restTemplate.postForObject(uri,tripulacionBean, ResultadoInsertVO.class);
     
 	    System.out.println(result);
 	    return result.getID()!=null;

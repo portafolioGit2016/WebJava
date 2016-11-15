@@ -7,7 +7,11 @@ public class VueloBean {
 	private String fecha;
 	private Integer id_mision;
 	private Integer idAeronave;
-	private String tripulacion;
+	private Integer idCopiloto;
+	private Integer tiempoPilotoP;
+	private Integer tiempoCopilotoP;
+	private Integer tiempoPilotoC;
+	private Integer tiempoCopilotoC;
 	
 	public Integer getNro_vuelo() {
 		return nro_vuelo;
@@ -45,12 +49,37 @@ public class VueloBean {
 	public void setIdAeronave(Integer idAeronave) {
 		this.idAeronave = idAeronave;
 	}
-	public String getTripulacion() {
-		return tripulacion;
+	public Integer getIdCopiloto() {
+		return idCopiloto;
 	}
-	public void setTripulacion(String tripulacion) {
-		this.tripulacion = tripulacion;
+	public void setIdCopiloto(Integer idCopiloto) {
+		this.idCopiloto = idCopiloto;
 	}
+	public Integer getTiempoPilotoP() {
+		return tiempoPilotoP;
+	}
+	public void setTiempoPilotoP(Integer tiempoPilotoP) {
+		this.tiempoPilotoP = tiempoPilotoP;
+	}
+	public Integer getTiempoCopilotoP() {
+		return tiempoCopilotoP;
+	}
+	public void setTiempoCopilotoP(Integer tiempoCopilotoP) {
+		this.tiempoCopilotoP = tiempoCopilotoP;
+	}
+	public Integer getTiempoPilotoC() {
+		return tiempoPilotoC;
+	}
+	public void setTiempoPilotoC(Integer tiempoPilotoC) {
+		this.tiempoPilotoC = tiempoPilotoC;
+	}
+	public Integer getTiempoCopilotoC() {
+		return tiempoCopilotoC;
+	}
+	public void setTiempoCopilotoC(Integer tiempoCopilotoC) {
+		this.tiempoCopilotoC = tiempoCopilotoC;
+	}
+	
 	
 	/**
 	public String origenVueloDisponible(VueloBean vuelo){
