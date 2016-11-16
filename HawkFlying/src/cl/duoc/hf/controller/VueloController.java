@@ -48,10 +48,7 @@ public class VueloController {
 	public ArrayList<AeronaveVO> getAeronaves(){
 		return vueloDelegate.getAeronaves();
 	}
-	@ModelAttribute("listaPlanesDeVuelo")
-	public ArrayList<PlanVueloVO> getPlanesDeVuelo(){
-		return vueloDelegate.getPlanesDeVuelo();
-	}
+	
 	@ModelAttribute("listaTiposVuelo")
 	public ArrayList<TipoVueloVO> getTiposDeVuelo(){
 		return vueloDelegate.getTiposDeVuelo();
@@ -76,12 +73,14 @@ public class VueloController {
 		model.addObject("vueloBean", vueloBean);
 		model.addObject("planVueloBean", planVueloBean);
 		model.addObject("usuario", usuario);
+		model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 		return model;
 	}
 	@RequestMapping(value="/administrar-vuelo",method=RequestMethod.POST)
 	
-	public ModelAndView crearVuelo(HttpServletRequest request, HttpServletResponse response,ModelAndView model, @ModelAttribute("vueloBean")VueloBean vueloBean)
+	public ModelAndView crearVuelo(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("vueloBean")VueloBean vueloBean)
 	{
+		ModelAndView model =null;
 		try {
 			SimpleDateFormat sfO=new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha=sfO.parse(vueloBean.getFecha());
@@ -110,15 +109,19 @@ public class VueloController {
 				System.out.println("Registro Creado Correctamente");
 				vueloBean = new VueloBean();
 				PlanVueloBean planVueloBean=new PlanVueloBean();
+				model = new ModelAndView("administrar-vuelo");
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
+				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 				request.setAttribute("message", "Vuelo creado correctamente");
 			}
 			else
 			{
 				PlanVueloBean planVueloBean=new PlanVueloBean();
+				model = new ModelAndView("administrar-vuelo");
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
+				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 				request.setAttribute("message", "Error al crear vuelo");
 			}
 			
@@ -131,8 +134,9 @@ public class VueloController {
 	
 @RequestMapping(value="/crearPlanVuelo",method=RequestMethod.POST)
 	
-	public ModelAndView crearPlanVuelo(HttpServletRequest request, HttpServletResponse response,ModelAndView model, @ModelAttribute("planVueloBean")PlanVueloBean planVueloBean)
+	public ModelAndView crearPlanVuelo(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("planVueloBean")PlanVueloBean planVueloBean)
 	{
+	ModelAndView model =null;
 		try {
 			SimpleDateFormat sfO=new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha=sfO.parse(planVueloBean.getEtd());
@@ -146,16 +150,20 @@ public class VueloController {
 				System.out.println("Registro Creado Correctamente");
 				VueloBean vueloBean = new VueloBean();
 				planVueloBean=new PlanVueloBean();
+				model = new ModelAndView("administrar-vuelo");
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
+				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 				request.setAttribute("message", "Plan de Vuelo creado correctamente");
 			}
 			else
 			{
 				planVueloBean=new PlanVueloBean();
 				VueloBean vueloBean = new VueloBean();
+				model = new ModelAndView("administrar-vuelo");
 				model.addObject("vueloBean", vueloBean);
 				model.addObject("planVueloBean", planVueloBean);
+				model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
 				request.setAttribute("message", "Error al crear plan de vuelo");
 			}
 			

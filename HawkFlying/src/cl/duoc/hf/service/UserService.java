@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.viewBean.VueloBean;
+import cl.duoc.hf.vo.LicenciaVO;
 import cl.duoc.hf.vo.LoginVO;
 import cl.duoc.hf.vo.PerfilVO;
 import cl.duoc.hf.vo.PilotoVO;
@@ -25,4 +26,5 @@ public interface UserService
 	public ArrayList<PilotoVO> getPilotos();
 	public boolean updateUser(RegistroBean registroBean);
 	public PilotoVO getPilotoxIdUsuario(Integer idUsuario);
+	public ArrayList<LicenciaVO> getLicenciasPiloto(Integer idPiloto);
 }
