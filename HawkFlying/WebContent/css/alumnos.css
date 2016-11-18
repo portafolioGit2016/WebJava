@@ -6,6 +6,11 @@
   overflow: scroll;
   overflow-x: hidden;
 }
+.container{
+  margin-left: 100px;
+  margin-top: 30px;
+  width: 90%;
+}
 .center {
     margin: auto;
     width: 50%;

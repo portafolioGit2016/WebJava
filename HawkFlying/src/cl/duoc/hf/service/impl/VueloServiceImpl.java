@@ -1,6 +1,8 @@
 package cl.duoc.hf.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -13,11 +15,14 @@ import cl.duoc.hf.vo.AerodromoResponse;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveResponse;
 import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.PlanMantenimientoResponse;
+import cl.duoc.hf.vo.PlanMantenimientoVO;
 import cl.duoc.hf.vo.PlanVueloResponse;
 import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.ResultadoInsertVO;
 import cl.duoc.hf.vo.TipoVueloResponse;
 import cl.duoc.hf.vo.TipoVueloVO;
+import cl.duoc.hf.vo.UsuarioVO;
 import cl.duoc.hf.vo.VueloResponse;
 import cl.duoc.hf.vo.VueloVO;
 
@@ -109,5 +114,16 @@ public class VueloServiceImpl implements VueloService{
 	    	System.out.println(e.getResponseHeaders());
 	    	return false;
 	    }
+	}
+	public ArrayList<PlanMantenimientoVO> getPlanesMantenimiento(Integer tipoBusqueda){
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/planMantenimiento/{tipo}";
+	     
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("tipo", tipoBusqueda.toString());
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    PlanMantenimientoResponse result = restTemplate.getForObject(uri, PlanMantenimientoResponse.class, params);
+    
+		return result.getPlanes();		
 	}
 }

@@ -8,6 +8,7 @@ import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.PlanMantenimientoVO;
 import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.TipoVueloVO;
 import cl.duoc.hf.vo.VueloVO;
@@ -64,5 +65,8 @@ public class VueloDelegate {
 	}
 	public boolean createPlanVuelo(PlanVueloBean planVueloBean){
 		return vueloService.createPlandeVuelo(planVueloBean);
+	}
+	public ArrayList<PlanMantenimientoVO> getPlanesMantenimiento(Integer tipoBusqueda){
+		return vueloService.getPlanesMantenimiento(tipoBusqueda);
 	}
 }

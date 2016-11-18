@@ -64,10 +64,10 @@
         </a>
       </li>
       <li>
-        <a href="general.html">
+        <a href="${contextPath}/consultaPlanMantenimiento">
           <i class="fa fa-users fa-2x"></i>
           <span class="nav-text">
-            Registros generales
+            Consultar Mantenimiento
           </span>
         </a>
       </li>
