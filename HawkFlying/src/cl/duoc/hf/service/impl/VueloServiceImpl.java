@@ -75,6 +75,14 @@ public class VueloServiceImpl implements VueloService{
 		return restTemplate.getForObject(uri, AeronaveResponse.class).getAeronaves();
 	}
 	@Override
+	public ArrayList<AeronaveVO> getAeronavesDisponibles(String tipoBusqueda) {
+		Map<String, String> params = new HashMap<String, String>();
+	    params.put("tipo", tipoBusqueda.toString());
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/aeronaveDisponible/{tipo}";
+		RestTemplate restTemplate = new RestTemplate();
+		return restTemplate.getForObject(uri, AeronaveResponse.class,params).getAeronaves();
+	}
+	@Override
 	public ArrayList<PlanVueloVO> getPlanesDeVuelo() {
 		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/plan_vuelo/";
 		RestTemplate restTemplate = new RestTemplate();

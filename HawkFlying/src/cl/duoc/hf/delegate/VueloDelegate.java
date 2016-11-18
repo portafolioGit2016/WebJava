@@ -55,6 +55,10 @@ public class VueloDelegate {
 	{
 		return vueloService.getAeronaves();
 	}
+	public ArrayList<AeronaveVO> getAeronavesDisponibles(String tipoBusqueda)
+	{
+		return vueloService.getAeronavesDisponibles(tipoBusqueda);
+	}
 	public ArrayList<PlanVueloVO> getPlanesDeVuelo()
 	{
 		return vueloService.getPlanesDeVuelo();

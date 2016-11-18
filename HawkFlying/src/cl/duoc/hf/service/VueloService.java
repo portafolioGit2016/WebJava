@@ -25,6 +25,7 @@ public  interface VueloService
 	public boolean updateVuelo(VueloBean vueloBean);
 	public ArrayList<AerodromoVO> getAerodromos();
 	public ArrayList<AeronaveVO> getAeronaves();
+	public ArrayList<AeronaveVO> getAeronavesDisponibles(String tipoBusqueda);
 	public ArrayList<PlanVueloVO> getPlanesDeVuelo();
 	public ArrayList<TipoVueloVO> getTiposDeVuelo();
 	public boolean createPlandeVuelo(PlanVueloBean planDevueloBean);

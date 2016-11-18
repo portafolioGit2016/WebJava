@@ -40,10 +40,10 @@
       </li>
       </c:if>
       <li class="has-subnav">
-          <a href="#">
+          <a href="${contextPath}/consultaAeronavesDisponibles">
             <i class="fa fa-fighter-jet fa-2x"></i>
             <span class="nav-text">
-              Menú de aeronaves
+             Aeronaves disponibles
             </span>
           </a>
       </li>
