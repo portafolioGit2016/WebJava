@@ -48,7 +48,7 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<form:input type="text" path="nro_vuelo"
+								<form:input type="number" path="nro_vuelo"
 									placeholder="Numero vuelo" />
 								<label for="first_name">NUMERO VUELO</label>
 							</div>
@@ -68,7 +68,7 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<form:input type="text" path="total_tv" placeholder="Total tv" required="required"/>
+								<form:input type="number" path="total_tv" placeholder="Total tv" required="required"/>
 								<label for="totaltv">TOTAL TIEMPO dE VUELO</label>
 							</div>
 						</div>
@@ -114,13 +114,13 @@
 						</div>	
 						<div class="row">
 							<div class="input-field col s12">
-								<form:input type="text" path="tiempoPilotoP" placeholder="tiempo piloto" required="required"/>
+								<form:input type="number" path="tiempoPilotoP" placeholder="tiempo piloto" required="required"/>
 								<label for="first_name">Nro. Horas Piloto</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<form:input type="text" path="tiempoCopilotoP" placeholder="tiempo copiloto" required="required"/>
+								<form:input type="number" path="tiempoCopilotoP" placeholder="tiempo copiloto" required="required"/>
 								<label for="first_name">Nro. Horas Copiloto</label>
 							</div>
 						</div>
@@ -138,13 +138,13 @@
 						</div>	
 						<div class="row">
 							<div class="input-field col s12">
-								<form:input type="text" path="tiempoPilotoC" placeholder="tiempo piloto" required="required"/>
+								<form:input type="number" path="tiempoPilotoC" placeholder="tiempo piloto" required="required"/>
 								<label for="first_name">Nro. Horas Piloto</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<form:input type="text" path="tiempoCopilotoC" placeholder="tiempo copiloto" required="required"/>
+								<form:input type="number" path="tiempoCopilotoC" placeholder="tiempo copiloto" required="required"/>
 								<label for="first_name">Nro. Horas Copiloto</label>
 							</div>
 						</div>			
