@@ -28,13 +28,17 @@
 <body>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<%@include file="MenuInclude.jsp"%>
+	
 	<div class="container">
+	<h3> Consultar Plan De Mantenimiento </h3>
 		<form:form action="consultaPlanMantenimiento" method="post" modelAttribute="consultaBean">
 			<form:select id="tipoBusqueda" name="tipoBusqueda" path="tipoBusqueda" style="display:block!important">
 				<form:option value="1">Helicoptero</form:option>
 				<form:option value="2">Avión</form:option>
 			</form:select>
-			<button type="submit">Consultar</button>
+			<div class="input-field col s6">
+				<button type="submit">Consultar</button>
+			</div>
 		</form:form>
 	</div>
 	<div class="container-alumnos">

@@ -56,10 +56,10 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="${contextPath}/ConsultaHrsVuelo">
           <i class="fa fa-book fa-2x"></i>
           <span class="nav-text">
-            Historial personal
+            Consultar Hrs Vuelo
           </span>
         </a>
       </li>
@@ -72,7 +72,7 @@
         </a>
       </li>
       <li>
-        <a href="alumnos.html">
+        <a href="${contextPath}/misAlumnos">
           <i class="fa fa-user-plus fa-2x"></i>
           <span class="nav-text">
             Mis alumnos

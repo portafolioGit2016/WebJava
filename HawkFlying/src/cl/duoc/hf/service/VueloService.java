@@ -7,6 +7,7 @@ import cl.duoc.hf.viewBean.TripulacionBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.HrsVueloVO;
 import cl.duoc.hf.vo.PlanMantenimientoVO;
 import cl.duoc.hf.vo.PlanVueloVO;
 import cl.duoc.hf.vo.TipoVueloVO;
@@ -31,4 +32,5 @@ public  interface VueloService
 	public boolean createPlandeVuelo(PlanVueloBean planDevueloBean);
 	public boolean createTripulacion(TripulacionBean tripulacionBean);
 	public ArrayList<PlanMantenimientoVO> getPlanesMantenimiento(Integer tipoBusqueda);
+	public HrsVueloVO consultaHrsVuelo(String idLicencia, String idusuario);
 }

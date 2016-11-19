@@ -27,7 +27,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@include file="MenuInclude.jsp"%>
   <div class="container-perfil">
-    <h2> Datos </h2>
+    <h3> Datos </h3>
     <div class="row">
     <form class="col s12">
       <div class="row">

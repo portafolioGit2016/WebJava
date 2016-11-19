@@ -15,6 +15,7 @@ import cl.duoc.hf.vo.AerodromoResponse;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.AeronaveResponse;
 import cl.duoc.hf.vo.AeronaveVO;
+import cl.duoc.hf.vo.HrsVueloVO;
 import cl.duoc.hf.vo.PlanMantenimientoResponse;
 import cl.duoc.hf.vo.PlanMantenimientoVO;
 import cl.duoc.hf.vo.PlanVueloResponse;
@@ -133,5 +134,19 @@ public class VueloServiceImpl implements VueloService{
 	    PlanMantenimientoResponse result = restTemplate.getForObject(uri, PlanMantenimientoResponse.class, params);
     
 		return result.getPlanes();		
+	}
+
+	@Override
+	public HrsVueloVO consultaHrsVuelo(String idLicencia, String idusuario) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/reporteHrsVuelo/{idLicencia}/{idusuario}";
+	     
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("idLicencia", idLicencia);
+	    params.put("idusuario", idusuario);
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    HrsVueloVO result = restTemplate.getForObject(uri, HrsVueloVO.class, params);
+    
+		return result;	
 	}
 }

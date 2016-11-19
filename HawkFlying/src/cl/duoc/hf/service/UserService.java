@@ -27,4 +27,5 @@ public interface UserService
 	public boolean updateUser(RegistroBean registroBean);
 	public PilotoVO getPilotoxIdUsuario(Integer idUsuario);
 	public ArrayList<LicenciaVO> getLicenciasPiloto(Integer idPiloto);
+	public ArrayList<UsuarioVO> getAlumnos(String idInstructor);
 }

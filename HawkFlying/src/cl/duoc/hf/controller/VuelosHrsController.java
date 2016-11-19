@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cl.duoc.hf.delegate.UserDelegate;
 import cl.duoc.hf.delegate.VueloDelegate;
 import cl.duoc.hf.viewBean.ConsultaHrsBean;
+import cl.duoc.hf.viewBean.ConsultaPlanMantenimientoBean;
 import cl.duoc.hf.vo.AerodromoVO;
 import cl.duoc.hf.vo.LicenciaVO;
 import cl.duoc.hf.vo.LoginVO;
@@ -29,31 +30,23 @@ public class VuelosHrsController {
 	@Autowired
 	private VueloDelegate vueloDelegate;
 
-	@RequestMapping(value = "/consultaHoras", method = RequestMethod.GET)
+	@RequestMapping(value = "/ConsultaHrsVuelo", method = RequestMethod.GET)
 	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView model = new ModelAndView("ConsultaHrsVuelo");
 		LoginVO datosUsuario = (LoginVO) request.getSession().getAttribute("usuarioLogeado");
 		PilotoVO piloto = userDelegate.getPilotoxIdUsuario(datosUsuario.getIdUsuario());
-		ArrayList<LicenciaVO> listaLicencias = userDelegate.getLicenciasPiloto(piloto.getIdPiloto());
-		boolean existeHeli = false;
-		boolean existePiloto = false;
-		ArrayList<LicenciaVO> listaFiltrada = new ArrayList<LicenciaVO>();
-		for (Iterator iterator = listaLicencias.iterator(); iterator.hasNext();) {
-			LicenciaVO licenciaVO = (LicenciaVO) iterator.next();
-			if (licenciaVO.getId().equals(1) && !existeHeli) {
-				listaFiltrada.add(licenciaVO);
-				existeHeli = true;
-			} else if ((licenciaVO.getId().equals(2) || licenciaVO.getId().equals(3) || licenciaVO.getId().equals(4)
-					|| licenciaVO.getId().equals(5) || licenciaVO.getId().equals(6)) && !existePiloto) {
-				licenciaVO.setId(2);
-				licenciaVO.setTipo("avion");
-				listaFiltrada.add(licenciaVO);
-				existePiloto = true;
-			}
-		}
-		model.addObject("listaLicencias", listaFiltrada);
+		model.addObject("listaLicencias", userDelegate.getLicenciasPiloto(piloto.getIdPiloto()));
 		ConsultaHrsBean chsBean=new ConsultaHrsBean();
 		chsBean.setIdPiloto(piloto.getIdPiloto());
+		model.addObject("chsBean", chsBean);
+		return model;
+	}
+	@RequestMapping(value = "/ConsultaHrsVuelo", method = RequestMethod.POST)
+	public ModelAndView buscarHrsVuelo(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("chsBean")ConsultaHrsBean chsBean) {
+		ModelAndView model = new ModelAndView("ConsultaHrsVuelo");
+		LoginVO datosUsuario = (LoginVO) request.getSession().getAttribute("usuarioLogeado");
+		model.addObject("listaLicencias", userDelegate.getLicenciasPiloto(chsBean.getIdPiloto()));
+		model.addObject("usuario", vueloDelegate.consultaHrsVuelo(chsBean.getTipoConsulta().toString(),datosUsuario.getIdUsuario().toString() ));
 		model.addObject("chsBean", chsBean);
 		return model;
 	}

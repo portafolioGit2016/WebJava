@@ -153,4 +153,17 @@ public class UserServiceImpl implements UserService{
 	    LicenciaResponse result = restTemplate.getForObject(uri, LicenciaResponse.class, params);
         return result.getLicencias();
 	}
+
+	@Override
+	public ArrayList<UsuarioVO> getAlumnos(String idInstructor) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/misAlumnos/{idInstructor}";
+	     
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("idInstructor", idInstructor);
+	   
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    UsuariosResponse result = restTemplate.getForObject(uri, UsuariosResponse.class, params);
+        return result.getUsuarios();
+	}
 }
