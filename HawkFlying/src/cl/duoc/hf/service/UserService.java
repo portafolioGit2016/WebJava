@@ -28,4 +28,5 @@ public interface UserService
 	public PilotoVO getPilotoxIdUsuario(Integer idUsuario);
 	public ArrayList<LicenciaVO> getLicenciasPiloto(Integer idPiloto);
 	public ArrayList<UsuarioVO> getAlumnos(String idInstructor);
+	public String ultimoVuelo(String idPiloto);
 }

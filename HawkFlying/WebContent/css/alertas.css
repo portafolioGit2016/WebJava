@@ -8,7 +8,16 @@
   overflow: hidden;
   color: white;
 }
-
+.notifBad {
+  width: 80%;
+  height: 150px;
+  margin: 40px auto;
+  background: #FE0000;
+  border-radius: 4px;
+  box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+  overflow: hidden;
+  color: white;
+}
 .lateral-ad{
   float: left;
   width: 100px;

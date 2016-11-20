@@ -15,6 +15,10 @@
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -34,12 +38,16 @@
 		<form:form class="col s12" method="post" action="ConsultaHrsVuelo"
 			modelAttribute="chsBean">
 			<form:hidden path="idPiloto"></form:hidden>
-			<form:select path="tipoConsulta" style="display:block!important">
-				<form:option value="" label="--- Seleccione Tipo Consulta ---" />
+			<form:select path="tipoConsulta" style="display:block!important" cssClass="label label-info" cssStyle="font-size:100%">
+				<form:option value="" cssStyle="font-size:100%" label="--- Seleccione Tipo Consulta ---" />
 				<form:options items="${listaLicencias}" itemValue="id"
 					itemLabel="tipo" />
 			</form:select>
-			<div class="input-field col s6">
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="text-info">
 				<button type="submit">Consultar Hrs</button>
 			</div>
 		</form:form>
@@ -48,28 +56,27 @@
 	<div class="container">
 		<form class="col s12">
 			<div class="row">
-				<div class="input-field col s6">
-					<input disabled id="first_name" type="text" class="validate"
-						value="<c:out value='${usuario.numLicencia}'> </c:out>"> <label
-						for="first_name">Nro.Licencia</label>
+				<div class="alert alert-info">
+					<label for="first_name" class="text-info">Nro.Licencia</label> <input
+						disabled id="first_name" type="text" class="validate"
+						value="<c:out value='${usuario.numLicencia}'> </c:out>">
 				</div>
-				<div class="input-field col s6">
-					<input disabled id="first_name" type="text" class="validate"
-						value="<c:out value='${usuario.nombre}'> </c:out>"> <label
-						for="first_name">Nombre Piloto</label>
+				<div class="alert alert-info">
+					<label for="first_name" class="text-info">Nombre Piloto</label> <input
+						disabled id="first_name" type="text" class="validate"
+						value="<c:out value='${usuario.nombre}'> </c:out>">
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6">
-					<input disabled id="first_name" type="text" class="validate"
-						value="<c:out value='${usuario.fechamae}'> </c:out>"> <label
-						for="first_name">Fecha DeL MAE</label>
+				<div class="alert alert-info">
+					<label for="first_name" class="text-info">Fecha De Medicina Aeroespacial (MAE) </label> <input
+						disabled id="first_name" type="text" class="validate"
+						value="<c:out value='${usuario.fechamae}'> </c:out>">
 				</div>
-				<div class="input-field col s6">
-					<input disabled id="first_name"
-						type="text" class="validate"
-						value="<c:out value='${usuario.ultimovuelo}'> </c:out>"> <label
-						for="first_name">Fecha Ultimo Vuelo</label>
+				<div class="alert alert-info">
+					<label for="first_name" class="text-info">Fecha De Ultimo
+						Vuelo</label> <input disabled id="first_name" type="text" class="validate"
+						value="<c:out value='${usuario.ultimovuelo}'> </c:out>">
 				</div>
 			</div>
 		</form>

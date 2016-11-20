@@ -38,7 +38,7 @@
           </span>
         </a>
       </li>
-      </c:if>
+    
       <li class="has-subnav">
           <a href="${contextPath}/consultaAeronavesDisponibles">
             <i class="fa fa-fighter-jet fa-2x"></i>
@@ -48,7 +48,7 @@
           </a>
       </li>
       <li>
-        <a href="alertas.html">
+        <a href="${contextPath}/misAlertas">
           <i class="fa fa-exclamation-triangle fa-2x"></i>
           <span class="nav-text">
             Alertas
@@ -79,6 +79,7 @@
           </span>
         </a>
       </li>
+    </c:if>
     </ul>
     <ul class="logout">
       <li>

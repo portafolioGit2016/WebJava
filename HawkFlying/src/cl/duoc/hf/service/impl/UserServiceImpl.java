@@ -21,6 +21,7 @@ import cl.duoc.hf.vo.PerfilesResponse;
 import cl.duoc.hf.vo.PilotoVO;
 import cl.duoc.hf.vo.PilotosResponse;
 import cl.duoc.hf.vo.ResultadoInsertVO;
+import cl.duoc.hf.vo.UltimoVueloVO;
 import cl.duoc.hf.vo.UsuarioVO;
 import cl.duoc.hf.vo.UsuariosResponse;
 
@@ -165,5 +166,18 @@ public class UserServiceImpl implements UserService{
 	    RestTemplate restTemplate = new RestTemplate();
 	    UsuariosResponse result = restTemplate.getForObject(uri, UsuariosResponse.class, params);
         return result.getUsuarios();
+	}
+
+	@Override
+	public String ultimoVuelo(String idPiloto) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/ultimoVueloPiloto/{idPiloto}";
+	     
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("idPiloto", idPiloto);
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    UltimoVueloVO result = restTemplate.getForObject(uri, UltimoVueloVO.class, params);
+    
+		return result.getUltimovuelo();
 	}
 }

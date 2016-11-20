@@ -10,45 +10,51 @@ import cl.duoc.hf.vo.PerfilVO;
 import cl.duoc.hf.vo.PilotoVO;
 import cl.duoc.hf.vo.UsuarioVO;
 
-public class UserDelegate
-{
+public class UserDelegate {
 	private UserService userService;
 
-	public UserService getUserService()
-	{
+	public UserService getUserService() {
 		return this.userService;
 	}
 
-	public void setUserService(UserService userService)
-	{
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	public ArrayList<UsuarioVO> getUsuarios(){
+
+	public ArrayList<UsuarioVO> getUsuarios() {
 		return userService.getUsuarios();
 	}
-	public ArrayList<UsuarioVO> getAlumnos(String idInstructor){
+
+	public ArrayList<UsuarioVO> getAlumnos(String idInstructor) {
 		return userService.getAlumnos(idInstructor);
 	}
-	public void deleteUser(int id){
+
+	public void deleteUser(int id) {
 		userService.deleteUser(id);
 	}
-	public ArrayList<PerfilVO> getPerfiles(){
+
+	public ArrayList<PerfilVO> getPerfiles() {
 		return userService.getPerfiles();
 	}
-	public ArrayList<PilotoVO> getPilotos(){
+
+	public ArrayList<PilotoVO> getPilotos() {
 		return userService.getPilotos();
 	}
-	public UsuarioVO getUsuario(String id){
+
+	public UsuarioVO getUsuario(String id) {
 		return userService.getUsuario(id);
 	}
-	public PilotoVO getPilotoxIdUsuario(Integer idUsuario){
+
+	public PilotoVO getPilotoxIdUsuario(Integer idUsuario) {
 		return userService.getPilotoxIdUsuario(idUsuario);
 	}
-	public boolean updateUser(RegistroBean registroBean){
+
+	public boolean updateUser(RegistroBean registroBean) {
 		return userService.updateUser(registroBean);
 	}
-	public ArrayList<LicenciaVO> getLicenciasPiloto(Integer idPiloto){
-		ArrayList<LicenciaVO> listaLicencias= userService.getLicenciasPiloto(idPiloto);
+
+	public ArrayList<LicenciaVO> getLicenciasPiloto(Integer idPiloto) {
+		ArrayList<LicenciaVO> listaLicencias = userService.getLicenciasPiloto(idPiloto);
 		boolean existeHeli = false;
 		boolean existePiloto = false;
 		ArrayList<LicenciaVO> listaFiltrada = new ArrayList<LicenciaVO>();
@@ -67,5 +73,23 @@ public class UserDelegate
 		}
 		return listaFiltrada;
 	}
+ //retorna todas licencias vencidas del piloto.
+	public ArrayList<LicenciaVO> getLicenciasAlerta(Integer idPiloto) {
+		ArrayList<LicenciaVO> listaLicencias = userService.getLicenciasPiloto(idPiloto);
+		ArrayList<LicenciaVO> listaFiltrada = new ArrayList<LicenciaVO>();
+		for (Iterator iterator = listaLicencias.iterator(); iterator.hasNext();) {
+			LicenciaVO licenciaVO = (LicenciaVO) iterator.next();
+			if(!licenciaVO.getEstadoLicencia().equalsIgnoreCase("vigente"))
+			{
+				listaFiltrada.add(licenciaVO);				
+			}
+			
+		}
+		return listaFiltrada;
+	}
 	
+	public String ultimoVuelo(String idPiloto)
+	{
+		return userService.ultimoVuelo(idPiloto);
+	}
 }
