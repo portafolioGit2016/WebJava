@@ -15,6 +15,10 @@
 	<meta charset="UTF-8">
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 	<link rel="stylesheet"
 		href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -31,11 +35,15 @@
 	<div class="container">
 	<h3> Aeronaves Disponibles Para Vuelos </h3>
 		<form:form action="consultaAeronavesDisponibles" method="post" modelAttribute="consultaBean">
-			<form:select id="tipoBusqueda" name="tipoBusqueda" path="tipoBusqueda" style="display:block!important">
-				<form:option value="1">Helicoptero</form:option>
-				<form:option value="2">Avión</form:option>
+			<form:select id="tipoBusqueda" name="tipoBusqueda" path="tipoBusqueda" cssClass="label label-info" cssStyle="font-size:100%" style="display:block!important">
+				<form:option value="1" cssStyle="font-size:100%">Helicoptero</form:option>
+				<form:option value="2" cssStyle="font-size:100%">Avión</form:option>
 			</form:select>
-			<div class="input-field col s6">
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="text-info">
 				<button type="submit">Consultar</button>
 			</div>
 		</form:form>

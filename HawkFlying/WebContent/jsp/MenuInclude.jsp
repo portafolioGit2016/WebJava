@@ -6,8 +6,7 @@
 		<c:if test="${sessionScope.usuarioLogeado.tipoPerfil=='1'}">
        	 <li><a href="${contextPath}/adminUsuarios">Usuarios</a></li>
         </c:if>
-        <li><a href="badges.html">Opción 2</a></li>
-        <li><a href="collapsible.html">Opción 3</a></li>
+        
       </ul>
     </div>
   </nav>
