@@ -134,37 +134,47 @@
 			<div class="modal-content">
 				<h4>Crear usuario</h4>
 				<div class="row">
-					<form:input type="text" path="username" placeholder="Username" />
-					<form:password path="password" placeholder="Password" />
-					<form:input type="text" path="nombre" placeholder="Nombre" />
-					<form:input type="text" path="apellido" placeholder="Apellido" />
-					<form:input type="text" path="email" id="email" placeholder="Email" />
+					<label for="username">USERNAME</label>
+					<form:input type="text" path="username" placeholder="Username" required="required" />
+					<label for="first_name">PASSWORD</label>
+					<form:password path="password" placeholder="Password" required="required" />
+					<label for="first_name">NOMBRE</label>
+					<form:input type="text" path="nombre" placeholder="Nombre" required="required"/>
+					<label for="first_name">APELLIDO</label>
+					<form:input type="text" path="apellido" placeholder="Apellido" required="required" />
+					<label for="first_name">EMAIL</label>
+					<form:input type="text" path="email" id="email" placeholder="Email" required="required" />
+					<label for="first_name">FECHA DE NACIMIENTO</label>
 					<form:input type="text" id="fecNacCreate" path="fecha_Nacimiento"
-						placeholder="Fecha de nacimiento" />
+						placeholder="Fecha de nacimiento" required="required"/>
+					<label for="first_name">SELECCIONE PERFIL</label>	
 					<form:select id="perfilCreate" path="tipoPerfil"
-						style="display:block!important" onchange="validateTipoPerfil();">
+						style="display:block!important" onchange="validateTipoPerfil();"  required="required">
 						<form:option value="" label="--- Seleccione Perfil ---" />
 						<form:options items="${listaPerfiles}" itemValue="idPerfil"
-							itemLabel="perfil" />
-
+							itemLabel="perfil"  />
+					<label for="first_name">SELECCIONE FECHA MAE</label>
 					</form:select>
 					<form:input type="text" id="fecVencMae" path="fecVencMae"
-						placeholder="Fecha Vencimiento MAE" />
+						placeholder="Fecha Vencimiento MAE" required="required"/>
+					<label for="first_name">SELECCIONE INSTRUCTOR</label>
 					<form:select path="licencia_piloto" style="display:block!important">
 						<form:option value="" label="--- Seleccione Piloto ---" />
 						<form:options items="${listaPilotos}" itemValue="idPiloto"
 							itemLabel="usuarioVO.nombre" />
 
 					</form:select>
-
+					<label for="first_name">RUT</label>
 					<form:input type="text" path="rut" id="rut"
-						placeholder="Rut ej: 11111111-1" />
+						placeholder="Rut ej: 11111111-1"  required="required"/>
 
 				</div>
 			</div>
 
 			<div class="modal-footer">
 				<button type="button" onclick="validaCrear();"
+					class=" modal-action waves-effect waves-green btn-flat">Crear</button>
+					<button type="submit" id="botonSubmit" style="display:none"
 					class=" modal-action waves-effect waves-green btn-flat">Crear</button>
 			</div>
 		</form:form>
@@ -244,30 +254,26 @@
     		}
     }
     
-    function validaCrear(){
+    function validaCrear()
+    {
     	var conceptVal = $("#perfilCreate option:selected").val();
     	
-    	if(!Fn.validaRut(document.getElementById("rut").value)){
+    	if(!Fn.validaRut(document.getElementById("rut").value))
+    	{
     		alert('Ingrese rut valido');
     	}
     	else
     		{
-    		if (!validateEmail(document.getElementById("email").value)){
-    			alert('Ingrese Email valido');
-    		}
+    			if (!validateEmail(document.getElementById("email").value))
+    			{
+    				alert('Ingrese Email valido');
+    			}
     		else
     			{
-    			if (conceptVal=="2" || conceptVal=="5"|| conceptVal=="6"){
-    	    		if (document.getElementById("fecVencMae").value==""){
-    	    			alert("Debe ingresar fecha Vencimiento MAE");
-    	    		}else{
-    	    			document.getElementById("formCrear").submit();
-        	    	}
-    	    	}else{
-    			document.getElementById("formCrear").submit();
+    			
+    				document.getElementById("botonSubmit").click();
     	    	}
-    			}
-    		
+    			    		
     		}
     }
     function validateEmail(email) {
