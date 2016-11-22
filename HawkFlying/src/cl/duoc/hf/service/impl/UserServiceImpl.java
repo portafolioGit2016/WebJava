@@ -12,6 +12,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import cl.duoc.hf.service.UserService;
+import cl.duoc.hf.viewBean.PilotoBean;
 import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.vo.LicenciaResponse;
 import cl.duoc.hf.vo.LicenciaVO;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean createUser(RegistroBean registroBean) {
+	public Integer createUser(RegistroBean registroBean) {
 				
 		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuarios/";
 	    try{
@@ -51,10 +52,10 @@ public class UserServiceImpl implements UserService{
 	    ResultadoInsertVO result = restTemplate.postForObject(uri,registroBean, ResultadoInsertVO.class);
     
 	    System.out.println(result);
-	    return result.getID()!=null;
+	    return Integer.valueOf(result.getID());
 	    }catch(HttpServerErrorException e){
 	    	System.out.println(e.getResponseHeaders());
-	    	return false;
+	    	return null;
 	    }
 	}
 	
@@ -179,5 +180,20 @@ public class UserServiceImpl implements UserService{
 	    UltimoVueloVO result = restTemplate.getForObject(uri, UltimoVueloVO.class, params);
     
 		return result.getUltimovuelo();
+	}
+
+	@Override
+	public Integer createPiloto(PilotoBean pilotoBean) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/piloto/";
+	    try{
+		RestTemplate restTemplate = new RestTemplate();
+	    ResultadoInsertVO result = restTemplate.postForObject(uri,pilotoBean, ResultadoInsertVO.class);
+    
+	    System.out.println(result);
+	    return Integer.valueOf(result.getID());
+	    }catch(HttpServerErrorException e){
+	    	System.out.println(e.getResponseHeaders());
+	    	return null;
+	    }
 	}
 }

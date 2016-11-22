@@ -11,6 +11,7 @@ public class RegistroBean {
 	private String rut;
 	private Integer licencia_piloto;
 	private String tipoPerfil;
+	private String fecVencMae;
 	
 	public Integer getLicencia_piloto() {
 		return licencia_piloto;
@@ -72,5 +73,11 @@ public class RegistroBean {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getFecVencMae() {
+		return fecVencMae;
+	}
+	public void setFecVencMae(String fecVencMae) {
+		this.fecVencMae = fecVencMae;
 	}
 }

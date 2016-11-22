@@ -28,7 +28,7 @@
           </span>
         </a>
       </li>
-      <c:if test="${sessionScope.usuarioLogeado.tipoPerfil=='2' || sessionScope.usuarioLogeado.tipoPerfil=='5'}">
+      <c:if test="${sessionScope.usuarioLogeado.tipoPerfil=='2' || sessionScope.usuarioLogeado.tipoPerfil=='5'|| sessionScope.usuarioLogeado.tipoPerfil=='6'}">
       <li class="has-subnav">
         <a href="${contextPath}/administrar-vuelo">
           <i class="fa fa-plane fa-2x"></i>

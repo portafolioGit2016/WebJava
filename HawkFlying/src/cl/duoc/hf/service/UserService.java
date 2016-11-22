@@ -2,6 +2,7 @@ package cl.duoc.hf.service;
 
 import java.util.ArrayList;
 
+import cl.duoc.hf.viewBean.PilotoBean;
 import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.viewBean.VueloBean;
 import cl.duoc.hf.vo.LicenciaVO;
@@ -19,7 +20,7 @@ public interface UserService
 {
 	public UsuarioVO getUsuario(String id);
 	public LoginVO isValidUser(String username, String password);
-	public boolean createUser(RegistroBean registroBean);
+	public Integer createUser(RegistroBean registroBean);
 	public ArrayList<UsuarioVO> getUsuarios();
 	public ArrayList<PerfilVO> getPerfiles();
 	public void deleteUser(int id);
@@ -29,4 +30,5 @@ public interface UserService
 	public ArrayList<LicenciaVO> getLicenciasPiloto(Integer idPiloto);
 	public ArrayList<UsuarioVO> getAlumnos(String idInstructor);
 	public String ultimoVuelo(String idPiloto);
+	public Integer createPiloto(PilotoBean pilotoBean);
 }

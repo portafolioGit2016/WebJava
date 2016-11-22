@@ -24,7 +24,7 @@ public class LoginDelegate
 	{
 	    return userService.isValidUser(username, password);
 	}
-	public boolean createUser(RegistroBean registroBean){
+	public Integer createUser(RegistroBean registroBean){
 		return userService.createUser(registroBean);
 	}
 }

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cl.duoc.hf.delegate.LoginDelegate;
 import cl.duoc.hf.delegate.UserDelegate;
+import cl.duoc.hf.viewBean.PilotoBean;
 import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.vo.UsuarioVO;
 
@@ -49,9 +50,17 @@ public class AdminUsuariosController {
 			Date fechaNac=sfO.parse(registroBean.getFecha_Nacimiento());
 			SimpleDateFormat sf=new SimpleDateFormat("dd-MMM-yy",Locale.US);
 			registroBean.setFecha_Nacimiento(sf.format(fechaNac).toUpperCase());
-			boolean isCreated = loginDelegate.createUser(registroBean);
-			if(isCreated)
+			Integer idUsuario = loginDelegate.createUser(registroBean);
+			if(idUsuario!=null)
 			{
+				if (registroBean.getTipoPerfil().equals("2")||registroBean.getTipoPerfil().equals("5")||registroBean.getTipoPerfil().equals("6")){
+					PilotoBean pilotoBean=new PilotoBean();
+					pilotoBean.setId_usuario(idUsuario.toString());
+					pilotoBean.setHora_total_vuelo("0");
+					Date fechaMae=sfO.parse(registroBean.getFecVencMae());
+					pilotoBean.setFecha_vencimientomae(sf.format(fechaMae).toUpperCase());
+					userDelegate.createPiloto(pilotoBean);
+				}
 				System.out.println("Registro Creado Correctamente");
 				model = new ModelAndView("adminUsuarios");
 				model.addObject("listaUsuarios", userDelegate.getUsuarios());
@@ -101,7 +110,7 @@ public class AdminUsuariosController {
 		registroBean.setFecha_Nacimiento(sf.format(calendar.getTime()).toUpperCase());
 	    registroBean.setLicencia_piloto(usuario.getLicenciaPiloto());
 	    registroBean.setNombre(usuario.getNombre());
-	    registroBean.setPassword(usuario.getPassword());
+	    registroBean.setPassword(usuario.getPassword());	    
 	    registroBean.setRut(usuario.getRut());
 	    registroBean.setTipoPerfil(String.valueOf(usuario.getTipoperfil()));
 	    registroBean.setUsername(usuario.getUsername());

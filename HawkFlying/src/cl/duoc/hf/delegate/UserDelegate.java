@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import cl.duoc.hf.service.UserService;
+import cl.duoc.hf.viewBean.PilotoBean;
 import cl.duoc.hf.viewBean.RegistroBean;
 import cl.duoc.hf.vo.LicenciaVO;
 import cl.duoc.hf.vo.PerfilVO;
@@ -92,4 +93,10 @@ public class UserDelegate {
 	{
 		return userService.ultimoVuelo(idPiloto);
 	}
+	
+	public Integer createPiloto(PilotoBean pilotoBean){
+		return userService.createPiloto(pilotoBean);
+	}
+	
+	
 }

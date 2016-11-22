@@ -21,6 +21,7 @@
 </head>
 <body>
 	<%@include file="MenuInclude.jsp"%>
+
 	<h3>Escuela de Aviación</h3>
 	<h4>"Escuadrilla Halcón"</h4>
 

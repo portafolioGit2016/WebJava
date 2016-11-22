@@ -34,7 +34,7 @@ public class LoginController {
 		try {
 			LoginVO isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
 			if (isValidUser.getCantidad() > 0) {
-				if (isValidUser.getTipoPerfil() == 1 || isValidUser.getTipoPerfil() == 2 || isValidUser.getTipoPerfil() == 5) {
+				if (isValidUser.getTipoPerfil() == 1 || isValidUser.getTipoPerfil() == 2 || isValidUser.getTipoPerfil() == 5 || isValidUser.getTipoPerfil() == 6) {
 					System.out.println("User Login Successful");
 					
 					request.setAttribute("loggedInUser", loginBean.getUsername());
