@@ -20,9 +20,13 @@ public class LoginDelegate
 		this.userService = userService;
 	}
 
-	public LoginVO isValidUser(String username, String password) throws SQLException
+	public LoginVO isValidUser(String username, String password)
 	{
 	    return userService.isValidUser(username, password);
+	}
+	public boolean existsUser(String username) 
+	{
+	    return userService.existsUser(username);
 	}
 	public Integer createUser(RegistroBean registroBean){
 		return userService.createUser(registroBean);

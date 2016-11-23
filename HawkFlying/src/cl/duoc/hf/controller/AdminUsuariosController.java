@@ -44,6 +44,15 @@ public class AdminUsuariosController {
 	public ModelAndView crearRegistro(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("registroBean")RegistroBean registroBean)
 	{
 		ModelAndView model= null;
+		boolean usuarioExiste=loginDelegate.existsUser(registroBean.getUsername());
+		if (usuarioExiste){
+			model = new ModelAndView("adminUsuarios");
+			model.addObject("listaUsuarios", userDelegate.getUsuarios());
+			model.addObject("listaPerfiles", userDelegate.getPerfiles());
+			model.addObject("listaPilotos", userDelegate.getPilotos());
+			request.setAttribute("message", "Usuario existe");
+			return model;
+		}
 		try
 		{
 			SimpleDateFormat sfO=new SimpleDateFormat("yyyy-MM-dd");

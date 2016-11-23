@@ -18,6 +18,7 @@ import cl.duoc.hf.vo.VueloVO;
  */
 public interface UserService
 {
+	public boolean existsUser(String user);
 	public UsuarioVO getUsuario(String id);
 	public LoginVO isValidUser(String username, String password);
 	public Integer createUser(RegistroBean registroBean);

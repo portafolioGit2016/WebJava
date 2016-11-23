@@ -29,6 +29,18 @@ import cl.duoc.hf.vo.UsuariosResponse;
 public class UserServiceImpl implements UserService{
 
 	@Override
+	public boolean existsUser(String user) {
+		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/existeUsuario/{user}";
+	     
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("user", user);
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    LoginVO result = restTemplate.getForObject(uri, LoginVO.class, params);
+    
+		return result.getCantidad()>0;
+	}
+	@Override
 	public LoginVO isValidUser(String username, String password) {
 		String uri="https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/usuario/login/{user}/{pwd}";
 	     
