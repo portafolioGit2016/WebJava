@@ -61,7 +61,21 @@ public class VueloController {
 	public ArrayList<PilotoVO> getPilotos(){
 		return userDelegate.getPilotos();
 	}
-	
+	@RequestMapping(value="/administrar-vuelo",method=RequestMethod.GET)
+	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response)
+	{
+		ModelAndView model = new ModelAndView("administrar-vuelo");
+		LoginVO datosUsuario=(LoginVO)request.getSession().getAttribute("usuarioLogeado");
+		UsuarioVO usuario=userDelegate.getUsuario(datosUsuario.getIdUsuario().toString());
+		VueloBean vueloBean = new VueloBean();
+		PlanVueloBean planVueloBean=new PlanVueloBean();
+		
+		model.addObject("vueloBean", vueloBean);
+		model.addObject("planVueloBean", planVueloBean);
+		model.addObject("usuario", usuario);
+		model.addObject("listaPlanesDeVuelo", vueloDelegate.getPlanesDeVuelo());
+		return model;
+	}
 	@RequestMapping(value="/administrar-vuelo",method=RequestMethod.POST)
 	
 	public ModelAndView crearVuelo(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("vueloBean")VueloBean vueloBean)
