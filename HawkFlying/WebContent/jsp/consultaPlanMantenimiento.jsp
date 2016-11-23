@@ -39,7 +39,8 @@
 			modelAttribute="consultaBean">
 			<form:select id="tipoBusqueda" name="tipoBusqueda"
 				path="tipoBusqueda" style="display:block!important"
-				cssClass="label label-info" cssStyle="font-size:100%">
+				cssClass="label label-info" cssStyle="font-size:100%" required="required">
+				<form:option value="0"> Seleccione Tipo Consulta</form:option>
 				<form:option value="1">Helicoptero</form:option>
 				<form:option value="2">Avión</form:option>
 			</form:select>

@@ -38,7 +38,7 @@
 		<form:form class="col s12" method="post" action="ConsultaHrsVuelo"
 			modelAttribute="chsBean">
 			<form:hidden path="idPiloto"></form:hidden>
-			<form:select path="tipoConsulta" style="display:block!important" cssClass="label label-info" cssStyle="font-size:100%">
+			<form:select path="tipoConsulta" style="display:block!important" cssClass="label label-info" cssStyle="font-size:100%" required="required">
 				<form:option value="" cssStyle="font-size:100%" label="--- Seleccione Tipo Consulta ---" />
 				<form:options items="${listaLicencias}" itemValue="id"
 					itemLabel="tipo" />
@@ -77,6 +77,11 @@
 					<label for="first_name" class="text-info">Fecha De Ultimo
 						Vuelo</label> <input disabled id="first_name" type="text" class="validate"
 						value="<c:out value='${usuario.ultimovuelo}'> </c:out>">
+				</div>
+				<div class="alert alert-info">
+					<label for="first_name" class="text-info">Horas Vuelo
+						</label> <input disabled id="first_name" type="text" class="validate"
+						value="<c:out value='${usuario.totalhrs}'> </c:out>">
 				</div>
 			</div>
 		</form>

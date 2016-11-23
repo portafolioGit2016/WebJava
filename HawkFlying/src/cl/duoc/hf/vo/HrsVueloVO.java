@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "num_licencia", "nombre", "fechamae", "ultimovuelo" })
+@JsonPropertyOrder({ "num_licencia", "nombre", "fechamae", "ultimovuelo", "totalhrs" })
 public class HrsVueloVO {
 
 	@JsonProperty("num_licencia")
@@ -23,6 +23,8 @@ public class HrsVueloVO {
 	private String fechamae;
 	@JsonProperty("ultimovuelo")
 	private String ultimovuelo;
+	@JsonProperty("totalhrs")
+	private Integer totalhrs;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -110,6 +112,14 @@ public class HrsVueloVO {
 	@JsonAnySetter
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
+	}
+	@JsonProperty("totalhrs")
+	public Integer getTotalhrs() {
+		return totalhrs;
+	}
+	@JsonProperty("totalhrs")
+	public void setTotalhrs(Integer totalhrs) {
+		this.totalhrs = totalhrs;
 	}
 
 }
