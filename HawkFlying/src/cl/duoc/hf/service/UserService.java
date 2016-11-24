@@ -32,4 +32,6 @@ public interface UserService
 	public ArrayList<UsuarioVO> getAlumnos(String idInstructor);
 	public String ultimoVuelo(String idPiloto);
 	public Integer createPiloto(PilotoBean pilotoBean);
+	public PerfilVO getPerfil(String idPerfil);
+	public PilotoVO getPiloto(String idPiloto);
 }

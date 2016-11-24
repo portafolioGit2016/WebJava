@@ -98,5 +98,10 @@ public class UserDelegate {
 		return userService.createPiloto(pilotoBean);
 	}
 	
-	
+	public PerfilVO getPerfil(String idPerfil){
+		return userService.getPerfil(idPerfil);
+	}
+	public PilotoVO getPiloto(String idPiloto){
+		return userService.getPiloto(idPiloto);
+	}
 }

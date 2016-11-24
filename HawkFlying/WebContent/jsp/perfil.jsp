@@ -79,13 +79,13 @@
 							<label for="first_name" class="text-info">Instructor a
 								Cargo</label> <input disabled id="first_name" type="text"
 								class="validate"
-								value="<c:out value='${usuario.licenciaPiloto}'> </c:out>">
+								value="<c:out value='${usuarioPiloto.nombre }'> </c:out> <c:out value='${usuarioPiloto.apellido }'> </c:out>">
 
 						</div>
 						<div class="alert alert-info">
 							<label for="first_name" class="text-info">Tipo Perfil</label> <input
 								disabled id="first_name" type="text" class="validate"
-								value="<c:out value='${usuario.tipoperfil}'> </c:out>">
+								value="<c:out value='${perfil.perfil}'> </c:out>">
 
 						</div>
 					</div>
