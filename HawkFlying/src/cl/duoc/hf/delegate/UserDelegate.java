@@ -33,7 +33,9 @@ public class UserDelegate {
 	public void deleteUser(int id) {
 		userService.deleteUser(id);
 	}
-
+	public void deletePiloto(int id) {
+		userService.deletePiloto(id);
+	}
 	public ArrayList<PerfilVO> getPerfiles() {
 		return userService.getPerfiles();
 	}

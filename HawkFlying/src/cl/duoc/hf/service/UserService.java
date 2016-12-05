@@ -34,4 +34,5 @@ public interface UserService
 	public Integer createPiloto(PilotoBean pilotoBean);
 	public PerfilVO getPerfil(String idPerfil);
 	public PilotoVO getPiloto(String idPiloto);
+	public void deletePiloto(int idPiloto);
 }

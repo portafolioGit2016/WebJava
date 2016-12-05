@@ -89,6 +89,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void deletePiloto(int idPiloto){
+		String uri = "https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/pilots/{id_piloto}";
+		java.util.Map<String, String> params = new HashMap<String, String>();
+		params.put("id_piloto", String.valueOf(idPiloto));
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.delete(uri, params);		
+	}
+	@Override
 	public ArrayList<PerfilVO> getPerfiles() {
 		String uri = "https://database-clportafoliootrial.db.us2.oraclecloudapps.com/apex/hawkflying/perfilusuario/";
 		RestTemplate restTemplate = new RestTemplate();

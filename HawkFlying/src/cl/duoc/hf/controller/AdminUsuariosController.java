@@ -21,6 +21,7 @@ import cl.duoc.hf.delegate.LoginDelegate;
 import cl.duoc.hf.delegate.UserDelegate;
 import cl.duoc.hf.viewBean.PilotoBean;
 import cl.duoc.hf.viewBean.RegistroBean;
+import cl.duoc.hf.vo.PilotoVO;
 import cl.duoc.hf.vo.UsuarioVO;
 
 @Controller
@@ -98,6 +99,11 @@ public class AdminUsuariosController {
 	public @ResponseBody ModelAndView getUsersForGrid(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "id") int id){
 		ModelAndView model = new ModelAndView("adminUsuarios");
+		UsuarioVO usuario = userDelegate.getUsuario(String.valueOf(id));
+		if (usuario.getTipoperfil()==2||usuario.getTipoperfil()==5||usuario.getTipoperfil()==6){
+			PilotoVO piloto=userDelegate.getPilotoxIdUsuario(id);
+			userDelegate.deletePiloto(piloto.getIdPiloto());
+		}
 		userDelegate.deleteUser(id);
 		model.addObject("listaUsuarios", userDelegate.getUsuarios());
 		model.addObject("listaPerfiles", userDelegate.getPerfiles());
